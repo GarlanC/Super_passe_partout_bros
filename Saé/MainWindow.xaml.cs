@@ -27,6 +27,20 @@ namespace Saé
             UCMenu uc = new UCMenu();
             ZoneJeu.Content = uc;
             uc.butJouer.Click += AfficherChoixPerso;
+            uc.butNiveaux.Click += AfficherChoixMenu;
+            uc.butParametres.Click += AfficherParametres;
+        }
+
+        private void AfficherParametres(object sender, RoutedEventArgs e)
+        {
+            UCParametres uc = new UCParametres();
+            ZoneJeu.Content = uc;
+        }
+
+        private void AfficherChoixMenu(object sender, RoutedEventArgs e)
+        {
+            UCChoixNiveau uc = new UCChoixNiveau();
+            ZoneJeu.Content = uc;
         }
 
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)
