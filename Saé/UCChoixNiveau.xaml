@@ -7,6 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Image Source="/images/fondSelections.png" Stretch="Fill"/>
+        <Button x:Name="butRetourNiveaux" Content="Retour" HorizontalAlignment="Left" Margin="53,343,0,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22"/>
+        <Image Margin="170,-20,170,208" Source="/images/titreNiveaux.png" Stretch="Fill"/>
+
     </Grid>
 </UserControl>

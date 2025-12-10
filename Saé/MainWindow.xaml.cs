@@ -37,12 +37,24 @@ namespace Saé
         {
             UCParametres uc = new UCParametres();
             ZoneJeu.Content = uc;
+            uc.butRetourParametre.Click += RetourParametre_Click;
+        }
+
+        private void RetourParametre_Click(object sender, RoutedEventArgs e)
+        {
+            AfficheMenu();
         }
 
         private void AfficherChoixMenu(object sender, RoutedEventArgs e)
         {
             UCChoixNiveau uc = new UCChoixNiveau();
             ZoneJeu.Content = uc;
+            uc.butRetourNiveaux.Click += RetourNiveaux_Click;
+        }
+
+        private void RetourNiveaux_Click(object sender, RoutedEventArgs e)
+        {
+            AfficheMenu();
         }
 
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)

@@ -10,15 +10,21 @@
 
   <ItemGroup>
     <None Remove="images\titre.png" />
+    <None Remove="images\titreNiveaux.png" />
+    <None Remove="images\titreParametres.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\FEMEU.png" />
+    <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
     <Resource Include="images\imgHommeDroite.png" />
     <Resource Include="images\imgHommeFace.png" />
     <Resource Include="images\imgHommeDroiteMarche.png" />
     <Resource Include="images\imgHommeDroiteSaut.png" />
     <Resource Include="images\titre.png" />
+    <Resource Include="images\titreNiveaux.png" />
+    <Resource Include="images\titreParametres.png" />
   </ItemGroup>
 
 </Project>
