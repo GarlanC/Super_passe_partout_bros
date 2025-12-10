@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\FEMEU.png" />
+    <None Remove="images\fondSelections.png" />
     <None Remove="images\perso_face.png" />
     <None Remove="images\perso_marche_droite.png" />
     <None Remove="images\perso_saut_droite.png" />
@@ -16,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\FEMEU.png" />
+    <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
     <Resource Include="images\perso_droite.png" />
     <Resource Include="images\perso_face.png" />
