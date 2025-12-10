@@ -15,6 +15,8 @@
     <None Remove="images\perso_marche_droite.png" />
     <None Remove="images\perso_saut_droite.png" />
     <None Remove="images\titre.png" />
+    <None Remove="images\titreNiveaux.png" />
+    <None Remove="images\titreParametres.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +28,8 @@
     <Resource Include="images\perso_marche_droite.png" />
     <Resource Include="images\perso_saut_droite.png" />
     <Resource Include="images\titre.png" />
+    <Resource Include="images\titreNiveaux.png" />
+    <Resource Include="images\titreParametres.png" />
   </ItemGroup>
 
 </Project>
