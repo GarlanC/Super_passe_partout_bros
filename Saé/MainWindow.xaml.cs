@@ -19,9 +19,24 @@ namespace Saé
         public MainWindow()
         {
             InitializeComponent();
+            AfficheMenu();
         }
 
-        public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
+        private void AfficheMenu()
+        {
+            UCMenu uc = new UCMenu();
+            ZoneJeu.Content = uc;
+            uc.butJouer.Click += AfficherChoixPerso;
+        }
+
+        private void AfficherChoixPerso(object sender, RoutedEventArgs e)
+        {
+            UCChoixPerso uc = new UCChoixPerso();
+            ZoneJeu.Content = uc;
+
+        }
+
+        /*public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= 0 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width)
                 Console.WriteLine("Le père Noel ne peut pas sortir de la fenêtre");
@@ -39,6 +54,6 @@ namespace Saé
                 }
                 Console.WriteLine("Position Left père Noel :" + Canvas.GetLeft(imgPerso));
             }
-        }
+        }*/
     }
 }

@@ -6,7 +6,5 @@
         xmlns:local="clr-namespace:Saé"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas x:Name="canvasJeu" KeyDown="canvasJeu_KeyDown">
-        
-    </Canvas>
+    <ContentControl x:Name="ZoneJeu" />
 </Window>
