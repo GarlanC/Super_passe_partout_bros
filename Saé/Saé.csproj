@@ -9,18 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\perso_face.png" />
-    <None Remove="images\perso_marche_droite.png" />
-    <None Remove="images\perso_saut_droite.png" />
     <None Remove="images\titre.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="images\fond_menu.png" />
-    <Resource Include="images\perso_droite.png" />
-    <Resource Include="images\perso_face.png" />
-    <Resource Include="images\perso_marche_droite.png" />
-    <Resource Include="images\perso_saut_droite.png" />
+    <Resource Include="images\imgHommeDroite.png" />
+    <Resource Include="images\imgHommeFace.png" />
+    <Resource Include="images\imgHommeDroiteMarche.png" />
+    <Resource Include="images\imgHommeDroiteSaut.png" />
     <Resource Include="images\titre.png" />
   </ItemGroup>
 

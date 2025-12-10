@@ -16,6 +16,8 @@ namespace Saé
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Perso { get; set; }
+        public static int pasPerso { get; set; } = 5;
         public MainWindow()
         {
             InitializeComponent();
@@ -49,25 +51,5 @@ namespace Saé
             ZoneJeu.Content = uc;
 
         }
-
-        /*public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= 0 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width)
-                Console.WriteLine("Le père Noel ne peut pas sortir de la fenêtre");
-            else
-            {
-                if (e.Key == Key.Right)
-                {
-                    Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + MainWindow.PasPerso);
-                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/img/pereNoel{MainWindow.Perso}Droite.png"));
-                }
-                if (e.Key == Key.Left)
-                {
-                    Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) - MainWindow.PasPerso);
-                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/img/pereNoel{MainWindow.Perso}Gauche.png"));
-                }
-                Console.WriteLine("Position Left père Noel :" + Canvas.GetLeft(imgPerso));
-            }
-        }*/
     }
 }

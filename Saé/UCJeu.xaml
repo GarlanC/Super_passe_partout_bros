@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Saé"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Canvas>
+        <Image x:Name="imgPerso" Source="/images/imgHommeFace.png" Height="120" Width="120" Canvas.Bottom="5" Canvas.Left="350"/>
+    </Canvas>
 </UserControl>
