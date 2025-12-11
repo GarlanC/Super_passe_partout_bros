@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\imgFemmeFace.png" />
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
     <None Remove="images\titreParametres.png" />
@@ -18,6 +19,7 @@
     <Resource Include="images\FEMEU.png" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
+    <Resource Include="images\imgFemmeFace.png" />
     <Resource Include="images\imgHommeDroite.png" />
     <Resource Include="images\imgHommeFace.png" />
     <Resource Include="images\imgHommeDroiteMarche.png" />

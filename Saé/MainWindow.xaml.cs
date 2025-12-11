@@ -18,6 +18,7 @@ namespace Saé
     {
         public static string Perso { get; set; }
         public static int pasPerso { get; set; } = 5;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -40,12 +41,21 @@ namespace Saé
             uc.butRetourParametre.Click += RetourParametre_Click;
         }
 
-        private void RetourParametre_Click(object sender, RoutedEventArgs e)
+        private void AfficherChoixMenu(object sender, RoutedEventArgs e)
         {
-            AfficheMenu();
+            UCChoixNiveau uc = new UCChoixNiveau();
+            ZoneJeu.Content = uc;
+            uc.butRetourNiveaux.Click += RetourNiveaux_Click;
         }
 
-        private void AfficherChoixMenu(object sender, RoutedEventArgs e)
+        private void AfficherChoixPerso(object sender, RoutedEventArgs e)
+        {
+            UCChoixPerso uc = new UCChoixPerso();
+            ZoneJeu.Content = uc;
+            uc.butJouer.Click += ChoixNiveau;
+        }
+
+        private void ChoixNiveau(object sender, RoutedEventArgs e)
         {
             UCChoixNiveau uc = new UCChoixNiveau();
             ZoneJeu.Content = uc;
@@ -57,11 +67,9 @@ namespace Saé
             AfficheMenu();
         }
 
-        private void AfficherChoixPerso(object sender, RoutedEventArgs e)
+        private void RetourParametre_Click(object sender, RoutedEventArgs e)
         {
-            UCChoixPerso uc = new UCChoixPerso();
-            ZoneJeu.Content = uc;
-
+            AfficheMenu();
         }
     }
 }
