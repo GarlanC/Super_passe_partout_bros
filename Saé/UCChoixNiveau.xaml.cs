@@ -24,5 +24,10 @@ namespace Saé
         {
             InitializeComponent();
         }
+
+        private void rbForet_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

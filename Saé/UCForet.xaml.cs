@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCNiveau2.xaml
+    /// Logique d'interaction pour UCForet.xaml
     /// </summary>
-    public partial class UCNiveau2 : UserControl
+    public partial class UCForet : UserControl
     {
-        public UCNiveau2()
+        public UCForet()
         {
             InitializeComponent();
         }

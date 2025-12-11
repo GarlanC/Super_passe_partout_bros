@@ -9,12 +9,13 @@
     <Grid>
         <Image Source="/images/fondSelections.png" Stretch="Fill"/>
         <Button x:Name="butRetourNiveaux" Content="Retour" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22" FontFamily="Ravie"/>
-        <Button x:Name="butLancerJeu" Content="Lancer" HorizontalAlignment="Right" Margin="0,340,50,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22"/>
         <Image Margin="191,-20,191,245" Source="/images/titreNiveaux.png" Stretch="Fill"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="133,205,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="381,260,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="630,242,0,0" VerticalAlignment="Top"/>
-
+        <Button x:Name="butJouer" Content="Button" HorizontalAlignment="Left" Margin="586,344,0,0" VerticalAlignment="Top" Height="55" Width="152"/>
+        <RadioButton x:Name="rbForet" Width="160" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,171,0,0" Click="rbForet_Click" >
+            <RadioButton.Content>
+                <Image Source="/images/logoForet.png" Width="160" Height="150"/>
+            </RadioButton.Content>
+        </RadioButton>
 
     </Grid>
 </UserControl>

@@ -9,10 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\FEMEU.png" />
+    <None Remove="images\fondForet1.jpeg" />
+    <None Remove="images\fondForet2.jpeg" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroiteMarche.png" />
     <None Remove="images\imgFemmeDroiteSaut.png" />
     <None Remove="images\imgFemmeFace.png" />
+    <None Remove="images\logoDesert.png" />
+    <None Remove="images\logoForet.png" />
+    <None Remove="images\logoPlage.png" />
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
     <None Remove="images\titreParametres.png" />
@@ -20,6 +26,8 @@
 
   <ItemGroup>
     <Resource Include="images\FEMEU.png" />
+    <Resource Include="images\fondForet1.jpeg" />
+    <Resource Include="images\fondForet2.jpeg" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
     <Resource Include="images\imgFemmeDroite.jpg" />
@@ -30,6 +38,9 @@
     <Resource Include="images\imgHommeFace.png" />
     <Resource Include="images\imgHommeDroiteMarche.png" />
     <Resource Include="images\imgHommeDroiteSaut.png" />
+    <Resource Include="images\logoDesert.png" />
+    <Resource Include="images\logoForet.png" />
+    <Resource Include="images\logoPlage.png" />
     <Resource Include="images\titre.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />

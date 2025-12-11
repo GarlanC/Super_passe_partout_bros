@@ -30,7 +30,6 @@ namespace Saé
             UCMenu uc = new UCMenu();
             ZoneJeu.Content = uc;
             uc.butJouer.Click += AfficherChoixPerso;
-            uc.butNiveaux.Click += AfficherChoixMenu;
             uc.butParametres.Click += AfficherParametres;
         }
 
@@ -60,12 +59,12 @@ namespace Saé
             UCChoixNiveau uc = new UCChoixNiveau();
             ZoneJeu.Content = uc;
             uc.butRetourNiveaux.Click += RetourNiveaux_Click;
-            uc.butLancerJeu.Click += LancerJeu;
+            uc.butJouer.Click += LancerForet;
         }
 
-        private void LancerJeu(object sender, RoutedEventArgs e)
+        private void LancerForet(object sender, RoutedEventArgs e)
         {
-            UCJeu uc = new UCJeu();
+            UCForet uc = new UCForet();
             ZoneJeu.Content = uc;
         }
 
