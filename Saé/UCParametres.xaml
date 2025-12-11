@@ -9,7 +9,7 @@
     <Grid>
         <Image Source="/images/fondSelections.png" Stretch="Fill"/>
         <Image Margin="94,-120,94,162" Source="/images/titreParametres.png" Stretch="Fill"/>
-        <Button x:Name="butRetourParametre" Content="Retour" HorizontalAlignment="Left" Margin="57,330,0,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22"/>
+        <Button x:Name="butRetourParametre" Content="Retour" HorizontalAlignment="Left" Margin="57,330,0,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22" FontFamily="Showcard Gothic"/>
 
     </Grid>
 </UserControl>

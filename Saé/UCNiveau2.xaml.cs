@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCMenu.xaml
+    /// Logique d'interaction pour UCNiveau2.xaml
     /// </summary>
-    public partial class UCMenu : UserControl
+    public partial class UCNiveau2 : UserControl
     {
-        public UCMenu()
+        public UCNiveau2()
         {
             InitializeComponent();
-        }
-
-        private void butJouer_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
