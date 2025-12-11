@@ -60,6 +60,13 @@ namespace Saé
             UCChoixNiveau uc = new UCChoixNiveau();
             ZoneJeu.Content = uc;
             uc.butRetourNiveaux.Click += RetourNiveaux_Click;
+            uc.butLancerJeu.Click += LancerJeu;
+        }
+
+        private void LancerJeu(object sender, RoutedEventArgs e)
+        {
+            UCJeu uc = new UCJeu();
+            ZoneJeu.Content = uc;
         }
 
         private void RetourNiveaux_Click(object sender, RoutedEventArgs e)
