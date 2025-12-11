@@ -18,7 +18,7 @@ namespace Saé
     {
         public static string Perso { get; set; }
         public static int pasPerso { get; set; } = 5;
-        
+
         public MainWindow()
         {
             InitializeComponent();
