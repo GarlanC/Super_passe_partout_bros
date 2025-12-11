@@ -9,8 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\fondForet1.jpeg" />
-    <None Remove="images\fondForet2.jpeg" />
+    <None Remove="images\imgFemmeDroite.jpg" />
+    <None Remove="images\imgFemmeDroiteMarche.png" />
+    <None Remove="images\imgFemmeDroiteSaut.png" />
     <None Remove="images\imgFemmeFace.png" />
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
@@ -19,10 +20,11 @@
 
   <ItemGroup>
     <Resource Include="images\FEMEU.png" />
-    <Resource Include="images\fondForet1.jpeg" />
-    <Resource Include="images\fondForet2.jpeg" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
+    <Resource Include="images\imgFemmeDroite.jpg" />
+    <Resource Include="images\imgFemmeDroiteMarche.png" />
+    <Resource Include="images\imgFemmeDroiteSaut.png" />
     <Resource Include="images\imgFemmeFace.png" />
     <Resource Include="images\imgHommeDroite.png" />
     <Resource Include="images\imgHommeFace.png" />
