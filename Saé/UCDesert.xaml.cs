@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCChoixNiveau.xaml
+    /// Logique d'interaction pour UCDesert.xaml
     /// </summary>
-    
-    
-    public partial class UCChoixNiveau : UserControl
+    public partial class UCDesert : UserControl
     {
-
-        public UCChoixNiveau()
+        public UCDesert()
         {
             InitializeComponent();
         }
-
-
     }
 }
