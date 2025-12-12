@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -13,9 +13,16 @@
     <None Remove="images\fondForet1.jpeg" />
     <None Remove="images\fondForet2.jpeg" />
     <None Remove="images\imgFemmeDroite.jpg" />
+    <None Remove="images\imgFemmeDroite.png" />
     <None Remove="images\imgFemmeDroiteMarche.png" />
     <None Remove="images\imgFemmeDroiteSaut.png" />
     <None Remove="images\imgFemmeFace.png" />
+    <None Remove="images\imgFemmeGauche.png" />
+    <None Remove="images\imgFemmeGaucheMarche.png" />
+    <None Remove="images\imgFemmeGaucheSaut.png" />
+    <None Remove="images\imgHommeGauche.png" />
+    <None Remove="images\imgHommeGaucheMarche.png" />
+    <None Remove="images\imgHommeGaucheSaut.png" />
     <None Remove="images\logoDesert.png" />
     <None Remove="images\logoForet.png" />
     <None Remove="images\logoPlage.png" />
@@ -25,19 +32,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="images\FEMEU.png" />
     <Resource Include="images\fondForet1.jpeg" />
     <Resource Include="images\fondForet2.jpeg" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
-    <Resource Include="images\imgFemmeDroite.jpg" />
+    <Resource Include="images\imgFemmeDroite.png" />
     <Resource Include="images\imgFemmeDroiteMarche.png" />
     <Resource Include="images\imgFemmeDroiteSaut.png" />
     <Resource Include="images\imgFemmeFace.png" />
+    <Resource Include="images\imgFemmeGauche.png" />
+    <Resource Include="images\imgFemmeGaucheMarche.png" />
+    <Resource Include="images\imgFemmeGaucheSaut.png" />
     <Resource Include="images\imgHommeDroite.png" />
     <Resource Include="images\imgHommeFace.png" />
     <Resource Include="images\imgHommeDroiteMarche.png" />
     <Resource Include="images\imgHommeDroiteSaut.png" />
+    <Resource Include="images\imgHommeGauche.png" />
+    <Resource Include="images\imgHommeGaucheMarche.png" />
+    <Resource Include="images\imgHommeGaucheSaut.png" />
     <Resource Include="images\logoDesert.png" />
     <Resource Include="images\logoForet.png" />
     <Resource Include="images\logoPlage.png" />
