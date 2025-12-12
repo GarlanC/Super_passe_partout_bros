@@ -44,8 +44,12 @@
     <Resource Include="images\imgFemmeGaucheMarche.png" />
     <Resource Include="images\imgFemmeGaucheSaut.png" />
     <Resource Include="images\imgHommeDroite.png" />
+    <Resource Include="images\imgHommeDroiteMarche2.png" />
+    <Resource Include="images\imgHommeDroiteMarche3.png" />
+    <Resource Include="images\imgHommeDroiteMarche4.png" />
+    <Resource Include="images\imgHommeDroiteMarche5.png" />
     <Resource Include="images\imgHommeFace.png" />
-    <Resource Include="images\imgHommeDroiteMarche.png" />
+    <Resource Include="images\imgHommeDroiteMarche1.png" />
     <Resource Include="images\imgHommeDroiteSaut.png" />
     <Resource Include="images\imgHommeGauche.png" />
     <Resource Include="images\imgHommeGaucheMarche.png" />

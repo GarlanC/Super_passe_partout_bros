@@ -22,24 +22,41 @@ namespace Saé
     /// </summary>
     public partial class UCForet : UserControl
     {
+        private BitmapImage[] persos = new BitmapImage[5];
         public static string orientationPerso = "Face";
+        private int nb = 0;
         public UCForet()
         {
             InitializeComponent();
+            InitializeImagesDroiteMarche();
+            if (MainWindow.Perso == "Homme")
+                Canvas.SetBottom(imgPerso, 63);
+            else
+                Canvas.SetBottom(imgPerso, 60);
             string nomFichierImage = $"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}.png";
             imgPerso.Source = new BitmapImage(new Uri(nomFichierImage));
         }
 
+        private void InitializeImagesDroiteMarche()
+        {
+            for (int i = 0; i < persos.Length; i++)
+                persos[i] = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}DroiteMarche{i + 1}.png"));
+        }
+
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -25 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 25)
+            if (e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 10)
                 Console.WriteLine("Le personnage ne peut pas sortir de la fenêtre");
             else
             {
                 if (e.Key == Key.Right)
                 {
                     Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + MainWindow.pasPerso);
-                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+                    nb++;
+                    if (nb / 3 == persos.Length)
+                        nb = 0;
+                    if (nb % 3 == 0)
+                        imgPerso.Source = persos[nb / 3];
                 }
                 else if (e.Key == Key.Left)
                 {
