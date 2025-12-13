@@ -22,13 +22,15 @@ namespace Saé
     /// </summary>
     public partial class UCForet : UserControl
     {
-        private BitmapImage[] persos = new BitmapImage[5];
+        private BitmapImage[] imgPersoDroite = new BitmapImage[3];
+        private BitmapImage[] imgPersoGauche = new BitmapImage[3];
+        public static string derniereTouche = "";
         public static string orientationPerso = "Face";
         private int nb = 0;
         public UCForet()
         {
             InitializeComponent();
-            InitializeImagesDroiteMarche();
+            InitializeImagesMarche();
             if (MainWindow.Perso == "Homme")
                 Canvas.SetBottom(imgPerso, 63);
             else
@@ -37,39 +39,89 @@ namespace Saé
             imgPerso.Source = new BitmapImage(new Uri(nomFichierImage));
         }
 
-        private void InitializeImagesDroiteMarche()
+        private void InitializeImagesMarche()
         {
-            for (int i = 0; i < persos.Length; i++)
-                persos[i] = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}DroiteMarche{i + 1}.png"));
+            for (int i = 0; i < imgPersoDroite.Length; i++)
+            {
+                imgPersoDroite[i] = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}DroiteMarche{i + 1}.png"));
+                imgPersoGauche[i] = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}GaucheMarche{i + 1}.png"));
+            }
         }
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 10)
-                Console.WriteLine("Le personnage ne peut pas sortir de la fenêtre");
+                return;
+            else if (e.Key == Key.Up && derniereTouche == "Right" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 10 - 91 || e.Key == Key.Up && derniereTouche == "Left" && Canvas.GetLeft(imgPerso) > -30 + 91)
+            {
+                if (derniereTouche == "Right")
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}DroiteSaut.png"));
+                else if (derniereTouche == "Left")
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}GaucheSaut.png"));
+                Canvas.SetBottom(imgPerso, Canvas.GetBottom(imgPerso) + 100);
+            }
             else
             {
                 if (e.Key == Key.Right)
                 {
-                    Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + MainWindow.pasPerso);
-                    nb++;
-                    if (nb / 3 == persos.Length)
-                        nb = 0;
-                    if (nb % 3 == 0)
-                        imgPerso.Source = persos[nb / 3];
+                    DeplaceDroite(imgPerso, MainWindow.pasPerso);
+                    derniereTouche = "Right";
                 }
                 else if (e.Key == Key.Left)
                 {
-                    Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) - MainWindow.pasPerso);
-                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
+                    DeplaceGauche(imgPerso, MainWindow.pasPerso);
+                    derniereTouche = "Left";
                 }
-                Console.WriteLine("Position gauche personnage :" + Canvas.GetLeft(imgPerso));
             }
         }
 
         private void canvasJeu_KeyUp(object sender, KeyEventArgs e)
         {
-            imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
+            if (e.Key == Key.Left)
+                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
+            else if (e.Key == Key.Right)
+                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+            else if (e.Key == Key.Down)
+                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
+            else if (e.Key == Key.Up && derniereTouche == "Right" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 10 - 91 || e.Key == Key.Up && derniereTouche == "Left" && Canvas.GetLeft(imgPerso) > -30 + 91)
+            {
+                for (int i = 1; i < 14; i++)
+                {
+                    if (derniereTouche == "Right")
+                    {
+                        Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + i);
+                        imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+                    }
+                    else if (derniereTouche == "Left")
+                    {
+                        Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) - i);
+                        imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
+                    }
+                    Canvas.SetBottom(imgPerso, Canvas.GetBottom(imgPerso) - i);
+                }
+                Canvas.SetBottom(imgPerso, Canvas.GetBottom(imgPerso) - 9);
+            }
+        }
+
+        public void DeplaceGauche(Image image, double pas)
+        {
+            Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) - MainWindow.pasPerso);
+            AnimationDeplacements(imgPersoGauche);
+        }
+
+        public void DeplaceDroite(Image image, double pas)
+        {
+            Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + MainWindow.pasPerso);
+            AnimationDeplacements(imgPersoDroite);
+        }
+
+        public void AnimationDeplacements(BitmapImage[] tabImg)
+        {
+            nb++;
+            if (nb / 3 == tabImg.Length)
+                nb = 0;
+            if (nb % 3 == 0)
+                imgPerso.Source = tabImg[nb / 3];
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
