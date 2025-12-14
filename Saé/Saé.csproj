@@ -34,6 +34,12 @@
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
     <None Remove="images\titreParametres.png" />
+    <None Remove="son\sonFond.mp3" />
+    <None Remove="son\sonJump.wav" />
+    <None Remove="son\sonMarcheHerbe.wav" />
+    <None Remove="son\sonMarcheSable.wav" />
+    <None Remove="son\sonMarcheTerre.wav" />
+    <None Remove="son\sonPiece.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +72,12 @@
     <Resource Include="images\titre.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />
+    <Resource Include="son\sonFond.mp3" />
+    <Resource Include="son\sonJump.wav" />
+    <Resource Include="son\sonMarcheHerbe.wav" />
+    <Resource Include="son\sonMarcheSable.wav" />
+    <Resource Include="son\sonMarcheTerre.wav" />
+    <Resource Include="son\sonPiece.wav" />
   </ItemGroup>
 
 </Project>

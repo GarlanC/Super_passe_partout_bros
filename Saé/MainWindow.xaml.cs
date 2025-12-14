@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Media;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -69,7 +70,6 @@ namespace Saé
         {
             UCForet uc = new UCForet();
             ZoneJeu.Content = uc;
-            //uc.butPause.Click += AfficherParametres;
         }
 
         private void AfficherParametres(object sender, RoutedEventArgs e)

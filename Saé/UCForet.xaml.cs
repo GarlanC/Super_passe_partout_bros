@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -37,6 +38,8 @@ namespace Saé
             InitializeComponent();
             InitializeImagesMarche();
             InitializeTimer();
+
+            
 
             timerSaut = new DispatcherTimer();
             timerSaut.Interval = TimeSpan.FromMilliseconds(16);
