@@ -33,13 +33,6 @@ namespace Saé
             uc.butParametres.Click += AfficherParametres;
         }
 
-        private void AfficherParametres(object sender, RoutedEventArgs e)
-        {
-            UCParametres uc = new UCParametres();
-            ZoneJeu.Content = uc;
-            uc.butRetourParametre.Click += RetourParametre_Click;
-        }
-
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)
         {
             UCChoixPerso uc = new UCChoixPerso();
@@ -62,18 +55,29 @@ namespace Saé
         {
             UCPlage uc = new UCPlage();
             ZoneJeu.Content = uc;
+            uc.butPause.Click += AfficherParametres;
         }
 
         private void LancerDesert(object sender, RoutedEventArgs e)
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
+            uc.butPause.Click += AfficherParametres;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)
         {
             UCForet uc = new UCForet();
             ZoneJeu.Content = uc;
+            //uc.butPause.Click += AfficherParametres;
+        }
+
+        private void AfficherParametres(object sender, RoutedEventArgs e)
+        {
+            UCParametres uc = new UCParametres();
+            ZoneJeu.Content = uc;
+            uc.butRetour.Click += RelancerJeu_Click;
+            uc.butValider.Click += RelancerJeu_Click;
         }
 
         private void RetourNiveaux_Click(object sender, RoutedEventArgs e)
@@ -81,9 +85,9 @@ namespace Saé
             AfficheMenu();
         }
 
-        private void RetourParametre_Click(object sender, RoutedEventArgs e)
+        private void RelancerJeu_Click(object sender, RoutedEventArgs e)
         {
-            AfficheMenu();
+            
         }
     }
 }

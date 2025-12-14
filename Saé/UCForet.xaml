@@ -10,5 +10,8 @@
         <Image Source="/images/fondForet1.jpeg" Stretch="Fill" Height="450" Width="800"/>
         <Image Source="/images/fondForet2.jpeg" Stretch="Fill" Canvas.Left="800" Height="450" Width="800"/>
         <Image x:Name="imgPerso" Source="/images/img{MainWindow.Perso}Face.png" Height="120" Width="120" Canvas.Left="20" Canvas.Bottom="60"/>
+        <Button x:Name="butPause" Background="{x:Null}" BorderBrush="Transparent" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Click="butPause_Click">
+            <Image Source="/images/boutonPause.png" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Button>
     </Canvas>
 </UserControl>

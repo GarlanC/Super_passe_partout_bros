@@ -26,6 +26,7 @@ namespace Saé
         private BitmapImage[] imgPersoDroite = new BitmapImage[3];
         private BitmapImage[] imgPersoGauche = new BitmapImage[3];
         private DispatcherTimer timerSaut;
+        private DispatcherTimer minuterie;
         public static string orientationPerso = "Face";
         private int nb = 0;
         private int sol = 60;
@@ -35,6 +36,7 @@ namespace Saé
         {
             InitializeComponent();
             InitializeImagesMarche();
+            InitializeTimer();
 
             timerSaut = new DispatcherTimer();
             timerSaut.Interval = TimeSpan.FromMilliseconds(16);
@@ -56,9 +58,16 @@ namespace Saé
             }
         }
 
+        private void InitializeTimer()
+        {
+            minuterie = new DispatcherTimer();
+            minuterie.Interval = TimeSpan.FromMilliseconds(16);
+            minuterie.Start();
+        }
+
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 10) && !enSaut)
+            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 25) && !enSaut)
                 return;
             else
             {
@@ -83,7 +92,7 @@ namespace Saé
                 imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
             else if (e.Key == Key.Down && !enSaut)
                 imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
-            else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 10 - 90))
+            else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 25 - 90))
             {
                 enSaut = true;
                 vitesseSaut = 30;
@@ -138,6 +147,30 @@ namespace Saé
         {
             Application.Current.MainWindow.KeyDown += canvasJeu_KeyDown;
             Application.Current.MainWindow.KeyUp += canvasJeu_KeyUp;
+        }
+
+        private void butPause_Click(object sender, RoutedEventArgs e)
+        {
+            minuterie.Stop();
+            bool parametreOuvert = true;
+            while (parametreOuvert)
+            {
+                UCParametres uc = new UCParametres();
+                canvasJeu.Children.Add(uc);
+                uc.butRetour.Click += (s, args) =>
+                {
+                    canvasJeu.Children.Remove(uc);
+                    minuterie.Start();
+                    parametreOuvert = false;
+                };
+                uc.butValider.Click += (s, args) =>
+                {
+                    canvasJeu.Children.Remove(uc);
+                    minuterie.Start();
+                    parametreOuvert = false;
+                };
+                break;
+            }
         }
     }
 }

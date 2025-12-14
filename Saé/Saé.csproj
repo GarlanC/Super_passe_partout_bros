@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="images\boutonPause.png" />
     <None Remove="images\FEMEU.png" />
     <None Remove="images\fondForet1.jpeg" />
     <None Remove="images\fondForet2.jpeg" />
@@ -36,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="images\boutonPause.png" />
     <Resource Include="images\fondForet1.jpeg" />
     <Resource Include="images\fondForet2.jpeg" />
     <Resource Include="images\fondSelections.png" />
