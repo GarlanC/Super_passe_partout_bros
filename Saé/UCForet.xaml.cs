@@ -1,8 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -40,7 +43,9 @@ namespace Saé
             InitializeComponent();
             InitializeImagesMarche();
             InitializeTimer();
-            InitializeSon();
+            MainWindow.InitializeSonFond();
+            MainWindow.InitializeSonPas();
+            MainWindow.InitializeSonSaut();
 
             timerSaut = new DispatcherTimer();
             timerSaut.Interval = TimeSpan.FromMilliseconds(16);
@@ -69,34 +74,36 @@ namespace Saé
             minuterie.Start();
         }
 
-        private void InitializeSon()
-        {
-        }
-
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 30) && !enSaut)
                 return;
             else
             {
+                MainWindow.bruitageSonSaut.Stop();
+                MainWindow.bruitageSonPas.Stop();
                 if (e.Key == Key.Right && !enSaut)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
+                    MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Droite";
                 }
                 else if (e.Key == Key.Left && !enSaut)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
+                    MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Gauche";
                 }
                 else if (e.Key == Key.Down && !enSaut)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
+                    MainWindow.bruitageSonPas.Play();
                 }
                 else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 30 - 90))
                 {
                     enSaut = true;
                     vitesseSaut = 30;
+                    MainWindow.bruitageSonSaut.Play();
                     timerSaut.Start();
 
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}Saut.png"));
@@ -167,14 +174,16 @@ namespace Saé
             {
                 UCParametres uc = new UCParametres();
                 canvasJeu.Children.Add(uc);
-                uc.butRetour.Click += (s, args) =>
+                uc.butRetour.Click += (sender, args) =>
                 {
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
                     parametreOuvert = false;
                 };
-                uc.butValider.Click += (s, args) =>
+                uc.butValider.Click += (sender, args) =>
                 {
+                    MainWindow.volumeFond = (int)uc.sliderSon.Value;
+                    MainWindow.musiqueFond.Volume = Math.Clamp(MainWindow.volumeFond / 100.0 , 0.0, 1.0);
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
                     parametreOuvert = false;

@@ -10,8 +10,8 @@
         <Image Source="/fond_menu.png" Stretch="Fill"/>
         <Image Source="/images/fond_menu.png" Stretch="Fill"/>
         <Image Margin="224,10,224,201" Source="/images/titre.png" Stretch="Fill"/>
-        <Button x:Name="butJouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.973,6.347" Height="43" Width="186" FontSize="22" BorderBrush="#FF707070" Click="butJouer_Click" FontFamily="Ravie"/>
-        <Button x:Name="butParametres" Content="Paramètres" HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="6.973,6.347" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
+        <Button x:Name="butJouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
+        <Button x:Name="butParametres" Content="Paramètres" HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie" Click="butParametres_Click"/>
 
     </Grid>
 </UserControl>

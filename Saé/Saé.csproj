@@ -34,6 +34,7 @@
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
     <None Remove="images\titreParametres.png" />
+    <None Remove="son\sonCle.wav" />
     <None Remove="son\sonFond.mp3" />
     <None Remove="son\sonJump.wav" />
     <None Remove="son\sonMarcheHerbe.wav" />
@@ -72,14 +73,24 @@
     <Resource Include="images\titre.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />
-    <Resource Include="son\sonFond.mp3">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="son\sonJump.wav" />
-    <Resource Include="son\sonMarcheHerbe.wav" />
-    <Resource Include="son\sonMarcheSable.wav" />
-    <Resource Include="son\sonMarcheTerre.wav" />
-    <Resource Include="son\sonPiece.wav" />
+    <Content Include="son\sonCle.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="son\sonFond.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="son\sonJump.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="son\sonMarcheSable.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="son\sonMarcheTerre.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="son\sonPiece.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

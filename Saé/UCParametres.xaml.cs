@@ -23,6 +23,7 @@ namespace Saé
         public UCParametres()
         {
             InitializeComponent();
+            sliderSon.Value = MainWindow.volumeFond;
         }
     }
 }
