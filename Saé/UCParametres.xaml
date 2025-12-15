@@ -11,7 +11,7 @@
         <Image Source="/images/fondSelections.png" Stretch="Fill"/>
         <Image Source="/images/titreParametres.png" Stretch="Fill" Height="214" Width="468" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,-25,0,0"/>
         <Slider x:Name="sliderSon" Height="25" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center" Minimum="0" Maximum="100" Value="50" Margin="0,243,0,0" SmallChange="1" TickPlacement="TopLeft"  IsSnapToTickEnabled="True"/>
-        <TextBlock Text="{Binding ElementName=sliderSon, Path=Value}"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
+        <TextBlock Text="{Binding ElementName=sliderSon, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="White"/>
         <Button x:Name="butRetour" Content="Retour" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="30" FontFamily="Showcard Gothic" Background="Transparent" Foreground="#FFF38129" BorderBrush="Black" BorderThickness="3"/>
         <Button x:Name="butValider" Content="Valider" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Height="50" Width="150" FontSize="30" FontFamily="Showcard Gothic" Background="Transparent" Foreground="#FFF38129" BorderBrush="Black" BorderThickness="3"/>
     </Grid>

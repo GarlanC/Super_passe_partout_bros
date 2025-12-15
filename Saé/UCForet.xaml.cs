@@ -40,6 +40,7 @@ namespace Saé
             InitializeComponent();
             InitializeImagesMarche();
             InitializeTimer();
+            InitializeSon();
 
             timerSaut = new DispatcherTimer();
             timerSaut.Interval = TimeSpan.FromMilliseconds(16);
@@ -66,6 +67,10 @@ namespace Saé
             minuterie = new DispatcherTimer();
             minuterie.Interval = TimeSpan.FromMilliseconds(16);
             minuterie.Start();
+        }
+
+        private void InitializeSon()
+        {
         }
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)

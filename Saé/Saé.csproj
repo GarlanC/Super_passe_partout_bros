@@ -72,7 +72,9 @@
     <Resource Include="images\titre.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />
-    <Resource Include="son\sonFond.mp3" />
+    <Resource Include="son\sonFond.mp3">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="son\sonJump.wav" />
     <Resource Include="son\sonMarcheHerbe.wav" />
     <Resource Include="son\sonMarcheSable.wav" />

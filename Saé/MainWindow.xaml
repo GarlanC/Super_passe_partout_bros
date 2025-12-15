@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Saé"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="820" ResizeMode="NoResize">
+        Title="MainWindow" Height="480" Width="810" ResizeMode="NoResize">
     <ContentControl x:Name="ZoneJeu"/>
 </Window>
