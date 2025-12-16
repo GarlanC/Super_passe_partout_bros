@@ -11,8 +11,12 @@
   <ItemGroup>
     <None Remove="images\boutonPause.png" />
     <None Remove="images\FEMEU.png" />
+    <None Remove="images\fondDesert1.png" />
+    <None Remove="images\fondDesert2.png" />
     <None Remove="images\fondForet1.jpeg" />
     <None Remove="images\fondForet2.jpeg" />
+    <None Remove="images\fondPlage1.png" />
+    <None Remove="images\fondPlage2.png" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroite.png" />
     <None Remove="images\imgFemmeDroiteMarche.png" />
@@ -45,8 +49,12 @@
 
   <ItemGroup>
     <Resource Include="images\boutonPause.png" />
+    <Resource Include="images\fondDesert1.png" />
+    <Resource Include="images\fondDesert2.png" />
     <Resource Include="images\fondForet1.jpeg" />
     <Resource Include="images\fondForet2.jpeg" />
+    <Resource Include="images\fondPlage1.png" />
+    <Resource Include="images\fondPlage2.png" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
     <Resource Include="images\imgFemmeDroite.png" />

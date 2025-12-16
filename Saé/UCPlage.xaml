@@ -7,11 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Canvas>
-        <Image Source="/images/fondForet1.jpeg" Stretch="Fill" Height="450" Width="800"/>
-        <Image Source="/images/fondForet2.jpeg" Stretch="Fill" Canvas.Left="800" Height="450" Width="800"/>
-        <Image x:Name="imgPerso" Source="/images/imgHommeFace.png" Height="120" Width="120" Canvas.Left="20" Canvas.Bottom="60"/>
         <Button x:Name="butPause" Background="{x:Null}" BorderBrush="Transparent" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0">
             <Image Source="/images/boutonPause.png" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Button>
+        <Image Height="450" Source="/images/fondPlage1.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Image Height="450" Source="/images/fondPlage2.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" Canvas.Left="800" VerticalAlignment="Center"/>
     </Canvas>
 </UserControl>
