@@ -14,6 +14,7 @@
             <Image Source="/images/fondDesert1.png" Stretch="Fill" Height="450" Width="800"/>
             <Image Source="/images/fondDesert2.png" Stretch="Fill" Canvas.Left="800" Height="450" Width="800"/>
             <Image x:Name="imgPerso" Source="/images/img{MainWindow.Perso}Face.png" Height="120" Width="120" Canvas.Left="20" Canvas.Bottom="116"/>
+            <Image x:Name="cleDesert" Width="115" Height="180" Canvas.Left="1450" Source="/images/cleDesert.png" Stretch="Fill" Canvas.Bottom="116"/>
         </Canvas>
         <Button x:Name="butPause" Background="{x:Null}" BorderBrush="Transparent" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="5" Canvas.Top="5" Click="butPause_Click">
             <Image Source="/images/boutonPause.png" Height="50"/>

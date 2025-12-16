@@ -10,19 +10,19 @@
 
   <ItemGroup>
     <None Remove="images\boutonPause.png" />
-    <None Remove="images\cléDesert.png" />
-    <None Remove="images\cléForet.png" />
-    <None Remove="images\cléPlage.png" />
     <None Remove="images\FEMEU.png" />
     <None Remove="images\fondDesert1.png" />
     <None Remove="images\fondDesert2.png" />
     <None Remove="images\fondForet1.jpeg" />
     <None Remove="images\fondForet2.jpeg" />
+    <None Remove="images\fondMenu.png" />
     <None Remove="images\fondPlage1.png" />
     <None Remove="images\fondPlage2.png" />
+    <None Remove="images\fontMenu2.png" />
     <None Remove="images\GagneDesert.png" />
     <None Remove="images\GagneForet.png" />
     <None Remove="images\GagnePlage.png" />
+    <None Remove="images\imgContinuer.png" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroite.png" />
     <None Remove="images\imgFemmeDroiteMarche.png" />
@@ -44,6 +44,12 @@
     <None Remove="images\imgHommeGaucheMarche2.png" />
     <None Remove="images\imgHommeGaucheMarche3.png" />
     <None Remove="images\imgHommeGaucheSaut.png" />
+    <None Remove="images\imgJouer.png" />
+    <None Remove="images\imgParametres.png" />
+    <None Remove="images\imgQuitter.png" />
+    <None Remove="images\imgRetour.png" />
+    <None Remove="images\imgSuivant.png" />
+    <None Remove="images\imgValider.png" />
     <None Remove="images\logoDesert.png" />
     <None Remove="images\logoForet.png" />
     <None Remove="images\logoPlage.png" />
@@ -52,7 +58,6 @@
     <None Remove="images\titreParametres.png" />
     <None Remove="son\sonCle.wav" />
     <None Remove="son\sonFond.mp3" />
-    <None Remove="son\sonJump.wav" />
     <None Remove="son\sonMarcheHerbe.wav" />
     <None Remove="son\sonMarcheSable.wav" />
     <None Remove="son\sonMarcheTerre.wav" />
@@ -61,23 +66,24 @@
 
   <ItemGroup>
     <Resource Include="images\boutonPause.png" />
-    <Resource Include="images\cléDesert.png" />
-    <Resource Include="images\cléForet.png" />
-    <Resource Include="images\cléPlage.png" />
+    <Resource Include="images\cleDesert.png" />
+    <Resource Include="images\cleForet.png" />
+    <Resource Include="images\clePlage.png" />
     <Resource Include="images\fondDesert1.png" />
     <Resource Include="images\fondDesert2.png" />
     <Resource Include="images\fondForet1.jpeg" />
     <Resource Include="images\fondForet2.jpeg" />
+    <Resource Include="images\fondMenu.png" />
     <Resource Include="images\fondPlage1.png" />
     <Resource Include="images\fondPlage2.png" />
     <Resource Include="images\fondSelections.png" />
-    <Resource Include="images\fond_menu.png" />
     <Resource Include="images\GagneDesert.png" />
     <Resource Include="images\GagneForet.png" />
     <Resource Include="images\GagnePlage.png" />
+    <Resource Include="images\imgFemmeDroiteMarche2.png" />
+    <Resource Include="images\imgContinuer.png" />
     <Resource Include="images\imgFemmeDroite.png" />
     <Resource Include="images\imgFemmeDroiteMarche1.png" />
-    <Resource Include="images\imgFemmeDroiteMarche2.png" />
     <Resource Include="images\imgFemmeDroiteMarche3.png" />
     <Resource Include="images\imgFemmeDroiteSaut.png" />
     <Resource Include="images\imgFemmeFace.png" />
@@ -97,10 +103,16 @@
     <Resource Include="images\imgHommeGaucheMarche2.png" />
     <Resource Include="images\imgHommeGaucheMarche3.png" />
     <Resource Include="images\imgHommeGaucheSaut.png" />
+    <Resource Include="images\imgJouer.png" />
+    <Resource Include="images\imgParametres.png" />
+    <Resource Include="images\imgQuitter.png" />
+    <Resource Include="images\imgRetour.png" />
+    <Resource Include="images\imgSuivant.png" />
+    <Resource Include="images\imgValider.png" />
     <Resource Include="images\logoDesert.png" />
     <Resource Include="images\logoForet.png" />
     <Resource Include="images\logoPlage.png" />
-    <Resource Include="images\titre.png" />
+    <Resource Include="images\titreMenu.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />
     <Content Include="son\sonCle.wav">
@@ -109,7 +121,7 @@
     <Content Include="son\sonFond.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="son\sonJump.wav">
+    <Content Include="son\sonSaut.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="son\sonMarcheSable.wav">

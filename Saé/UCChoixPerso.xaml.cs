@@ -27,13 +27,13 @@ namespace Saé
 
         private void rbHomme_Click(object sender, RoutedEventArgs e)
         {
-            butJouer.IsEnabled = true;
+            butJouer.IsHitTestVisible = true;
             MainWindow.Perso = "Homme";
         }
 
         private void rbFemme_Click(object sender, RoutedEventArgs e)
         {
-            butJouer.IsEnabled = true;
+            butJouer.IsHitTestVisible = true;
             MainWindow.Perso = "Femme";
         }
     }

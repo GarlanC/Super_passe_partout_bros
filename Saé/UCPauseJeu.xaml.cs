@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCParametres.xaml
+    /// Logique d'interaction pour PauseJeu.xaml
     /// </summary>
-    public partial class UCParametres : UserControl
+    public partial class UCPauseJeu : UserControl
     {
-        public UCParametres()
+        public UCPauseJeu()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            sliderSon.Value = MainWindow.volumeFond;
         }
     }
 }

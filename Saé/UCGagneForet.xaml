@@ -8,7 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Image Source="/images/GagneForet.png" Stretch="Fill"/>
-        <Button x:Name="butSuivant" Content="Suivant" HorizontalAlignment="Left" Margin="579,338,0,0" VerticalAlignment="Top" Height="65" Width="180"/>
-
+        <Button x:Name="butSuivant" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="60" Width="180" Margin="0,0,30,30" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Image Source="/images/imgSuivant.png" Stretch="Fill"/>
+        </Button>
     </Grid>
 </UserControl>
