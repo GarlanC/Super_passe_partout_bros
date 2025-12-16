@@ -37,6 +37,8 @@ namespace Saé
         private int sol = 60;
         private bool enSaut = false;
         private int vitesseSaut = 0;
+        private TranslateTransform camera;
+        private double largeurNiveau = 1600;
 
         public UCForet()
         {
@@ -46,6 +48,8 @@ namespace Saé
             MainWindow.InitializeSonFond();
             MainWindow.InitializeSonPas();
             MainWindow.InitializeSonSaut();
+
+            camera = cameraTransform;
 
             timerSaut = new DispatcherTimer();
             timerSaut.Interval = TimeSpan.FromMilliseconds(16);
@@ -76,7 +80,7 @@ namespace Saé
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > ActualWidth - imgPerso.Width + 30) && !enSaut)
+            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
             else
             {
@@ -99,7 +103,7 @@ namespace Saé
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
                     MainWindow.bruitageSonPas.Play();
                 }
-                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < ActualWidth - imgPerso.Width + 30 - 90))
+                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2*ActualWidth - imgPerso.Width + 20 - 90))
                 {
                     enSaut = true;
                     vitesseSaut = 30;
@@ -123,12 +127,14 @@ namespace Saé
         {
             Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) - MainWindow.pasPerso);
             AnimationDeplacements(imgPersoGauche);
+            UpdateCamera();
         }
 
         public void DeplaceDroite(Image image, double pas)
         {
             Canvas.SetLeft(imgPerso, Canvas.GetLeft(imgPerso) + MainWindow.pasPerso);
             AnimationDeplacements(imgPersoDroite);
+            UpdateCamera();
         }
 
         public void AnimationDeplacements(BitmapImage[] tabImg)
@@ -158,6 +164,7 @@ namespace Saé
 
                 imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}.png"));
             }
+            UpdateCamera();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -190,6 +197,21 @@ namespace Saé
                 };
                 break;
             }
+        }
+
+        private void UpdateCamera()
+        {
+            double persoX = Canvas.GetLeft(imgPerso);
+            double ecranCentre = ActualWidth / 2;
+
+            // Caméra cible
+            double cameraX = -persoX + ecranCentre - imgPerso.Width / 2;
+
+            // Limites gauche / droite
+            cameraX = Math.Min(0, cameraX);
+            cameraX = Math.Max(-(largeurNiveau - ActualWidth), cameraX);
+
+            camera.X = cameraX;
         }
     }
 }
