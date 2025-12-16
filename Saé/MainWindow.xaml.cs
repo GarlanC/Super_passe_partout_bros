@@ -158,7 +158,7 @@ namespace Saé
         {
             UCGagneForet uc = new UCGagneForet();
             ZoneJeu.Content = uc;
-            uc.butSuivant.Click += RetourNiveaux_Click;
+            uc.butSuivant.Click += RetourMenu_Click;
         }
     }
 }

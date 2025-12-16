@@ -18,8 +18,5 @@
         <Button x:Name="butPause" Background="{x:Null}" BorderBrush="Transparent" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="5" Canvas.Top="5" Click="butPause_Click">
             <Image Source="/images/boutonPause.png" Height="50"/>
         </Button>
-        <Image Height="450" Source="/images/fondPlage1.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image Height="450" Source="/images/fondPlage2.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" Canvas.Left="800" VerticalAlignment="Center"/>
-        <Image x:Name="imgPerso" Source="/images/imgHommeFace.png" Height="120" Width="120" Canvas.Bottom="60" Canvas.Top="225" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-    </Canvas>
+    </Grid>
 </UserControl>
