@@ -19,5 +19,5 @@
             <Image Source="/images/boutonPause.png" Height="50"/>
         </Button>
         <Image x:Name="cleForet" Height="191" Canvas.Left="1409" Source="/images/cléForet.png" Stretch="Fill" Canvas.Bottom="60" Width="115"/>
-    </Canvas>
+        </Canvas>
 </UserControl>
