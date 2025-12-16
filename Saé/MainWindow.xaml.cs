@@ -100,7 +100,7 @@ namespace Saé
         {
             UCChoixNiveau uc = new UCChoixNiveau();
             ZoneJeu.Content = uc;
-            uc.butRetourNiveaux.Click += RetourNiveaux_Click;
+            uc.butRetourNiveaux.Click += RetourMenu_Click;
             uc.butDesert.Click += LancerDesert;
             uc.butForet.Click += LancerForet;
             uc.butPlage.Click += LancerPlage;
@@ -111,12 +111,20 @@ namespace Saé
         {
             UCParametres uc = new UCParametres();
             ZoneJeu.Content = uc;
-            uc.butRetour.Click += RetourNiveaux_Click;
-            uc.butValider.Click += RetourNiveaux_Click;
+            uc.butRetour.Click += RetourMenu_Click;
+            uc.butValider.Click += EnregistreSon;
         }
 
-        public void RetourNiveaux_Click(object sender, RoutedEventArgs e)
+        public void RetourMenu_Click(object sender, RoutedEventArgs e)
         {
+            AfficheMenu();
+        }
+
+        public void EnregistreSon(object sender, RoutedEventArgs e)
+        {
+            UCParametres uc = new UCParametres();
+            ZoneJeu.Content = uc;
+            volumeFond = (int)uc.sliderSon.Value;
             AfficheMenu();
         }
 
@@ -131,7 +139,6 @@ namespace Saé
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
-            uc.butPause.Click += AfficherParametres;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)

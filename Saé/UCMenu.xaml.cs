@@ -24,24 +24,5 @@ namespace Saé
         {
             InitializeComponent();
         }
-
-        private void butParametres_Click(object sender, RoutedEventArgs e)
-        {
-            var mw = (MainWindow)Application.Current.MainWindow;
-            UCParametres uc = new UCParametres();
-            uc.sliderSon.Value = MainWindow.volumeFond;
-
-            uc.butRetour.Click += (s, a) =>
-            {
-                mw.AfficheMenu();
-            };
-
-            uc.butValider.Click += (s, a) =>
-            {
-                MainWindow.volumeFond = (int)uc.sliderSon.Value;
-                mw.AfficheMenu();
-            };
-            mw.ZoneJeu.Content = uc;
-        }
     }
 }

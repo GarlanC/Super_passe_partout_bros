@@ -22,12 +22,9 @@ namespace Saé
     
     public partial class UCChoixNiveau : UserControl
     {
-
         public UCChoixNiveau()
         {
             InitializeComponent();
         }
-
-
     }
 }
