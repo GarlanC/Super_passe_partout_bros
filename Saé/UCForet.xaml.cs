@@ -223,10 +223,8 @@ namespace Saé
             double persoX = Canvas.GetLeft(imgPerso);
             double ecranCentre = ActualWidth / 2;
 
-            // Caméra cible
             double cameraX = -persoX + ecranCentre - imgPerso.Width / 2;
 
-            // Limites gauche / droite
             cameraX = Math.Min(0, cameraX);
             cameraX = Math.Max(-(largeurNiveau - ActualWidth), cameraX);
 
