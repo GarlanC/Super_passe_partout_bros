@@ -10,6 +10,9 @@
 
   <ItemGroup>
     <None Remove="images\boutonPause.png" />
+    <None Remove="images\cléDesert.png" />
+    <None Remove="images\cléForet.png" />
+    <None Remove="images\cléPlage.png" />
     <None Remove="images\FEMEU.png" />
     <None Remove="images\fondDesert1.png" />
     <None Remove="images\fondDesert2.png" />
@@ -17,6 +20,9 @@
     <None Remove="images\fondForet2.jpeg" />
     <None Remove="images\fondPlage1.png" />
     <None Remove="images\fondPlage2.png" />
+    <None Remove="images\GagneDesert.png" />
+    <None Remove="images\GagneForet.png" />
+    <None Remove="images\GagnePlage.png" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroite.png" />
     <None Remove="images\imgFemmeDroiteMarche.png" />
@@ -49,6 +55,9 @@
 
   <ItemGroup>
     <Resource Include="images\boutonPause.png" />
+    <Resource Include="images\cléDesert.png" />
+    <Resource Include="images\cléForet.png" />
+    <Resource Include="images\cléPlage.png" />
     <Resource Include="images\fondDesert1.png" />
     <Resource Include="images\fondDesert2.png" />
     <Resource Include="images\fondForet1.jpeg" />
@@ -57,6 +66,9 @@
     <Resource Include="images\fondPlage2.png" />
     <Resource Include="images\fondSelections.png" />
     <Resource Include="images\fond_menu.png" />
+    <Resource Include="images\GagneDesert.png" />
+    <Resource Include="images\GagneForet.png" />
+    <Resource Include="images\GagnePlage.png" />
     <Resource Include="images\imgFemmeDroite.png" />
     <Resource Include="images\imgFemmeDroiteMarche.png" />
     <Resource Include="images\imgFemmeDroiteSaut.png" />

@@ -16,5 +16,6 @@
         <Button x:Name="butPause" Background="{x:Null}" BorderBrush="Transparent" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Click="butPause_Click">
             <Image Source="/images/boutonPause.png" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Button>
+        <Image x:Name="cleForet" Height="191" Canvas.Left="1409" Source="/images/cléForet.png" Stretch="Fill" Canvas.Bottom="60" Width="115"/>
     </Canvas>
 </UserControl>

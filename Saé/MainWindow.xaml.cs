@@ -42,6 +42,7 @@ namespace Saé
             musiqueFond.Open(new Uri(path, UriKind.Absolute));
             musiqueFond.Play();
             musiqueFond.MediaEnded += (_, __) => { musiqueFond.Position = TimeSpan.Zero; musiqueFond.Play(); };
+            ;
         }
 
         public static void InitializeSonPas()
@@ -137,7 +138,20 @@ namespace Saé
         {
             UCForet uc = new UCForet();
             ZoneJeu.Content = uc;
+            uc.CleCollectee += CleForetCollectee;
         }
 
+        private void CleForetCollectee()
+        {
+            AgagneForet();
+
+        }
+
+        private void AgagneForet()
+        {
+            UCGagneForet uc = new UCGagneForet();
+            ZoneJeu.Content = uc;
+            uc.butSuivant.Click += RetourNiveaux_Click;
+        }
     }
 }

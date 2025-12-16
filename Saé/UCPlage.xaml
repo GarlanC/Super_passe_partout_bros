@@ -12,5 +12,6 @@
         </Button>
         <Image Height="450" Source="/images/fondPlage1.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image Height="450" Source="/images/fondPlage2.png" Stretch="Fill" Width="800" HorizontalAlignment="Left" Canvas.Left="800" VerticalAlignment="Center"/>
+        <Image x:Name="imgPerso" Source="/images/imgHommeFace.png" Height="120" Width="120" Canvas.Bottom="60" Canvas.Top="225" Canvas.Left="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </Canvas>
 </UserControl>

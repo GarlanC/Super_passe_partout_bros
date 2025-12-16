@@ -31,7 +31,8 @@ namespace Saé
         private BitmapImage[] imgPersoGauche = new BitmapImage[3];
         private DispatcherTimer timerSaut;
         private DispatcherTimer minuterie;
-
+        public bool HasKey { get; private set; } = false;
+        public event Action CleCollectee;
         public string orientationPerso = "Face";
         private int nb = 0;
         private int sol = 60;
@@ -62,6 +63,7 @@ namespace Saé
             imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}.png"));
         }
 
+
         private void InitializeImagesMarche()
         {
             for (int i = 0; i < imgPersoDroite.Length; i++)
@@ -77,33 +79,48 @@ namespace Saé
             minuterie.Interval = TimeSpan.FromMilliseconds(16);
             minuterie.Start();
         }
+        private void VerifierCle()
+        {
+            double xPerso = Canvas.GetLeft(imgPerso);
+            double xCle = Canvas.GetLeft(cleForet);
+
+
+            if (xPerso > xCle)
+            {
+                cleForet.Visibility = Visibility.Hidden;
+                HasKey = true;
+                CleCollectee.Invoke();
+            }
+        }
+
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
+            
             else
             {
                 MainWindow.bruitageSonSaut.Stop();
                 MainWindow.bruitageSonPas.Stop();
-                if (e.Key == Key.Right && !enSaut)
+                if (e.Key == Key.Right && !enSaut && HasKey == false)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Droite";
                 }
-                else if (e.Key == Key.Left && !enSaut)
+                else if (e.Key == Key.Left && !enSaut && HasKey == false)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Gauche";
                 }
-                else if (e.Key == Key.Down && !enSaut)
+                else if (e.Key == Key.Down && !enSaut && HasKey == false)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
                     MainWindow.bruitageSonPas.Play();
                 }
-                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2*ActualWidth - imgPerso.Width + 20 - 90))
+                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90) && HasKey== false)
                 {
                     enSaut = true;
                     vitesseSaut = 30;
@@ -112,6 +129,8 @@ namespace Saé
 
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}Saut.png"));
                 }
+                if (HasKey == false)
+                    VerifierCle();
             }
         }
 
