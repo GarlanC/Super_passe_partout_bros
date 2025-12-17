@@ -34,6 +34,7 @@ namespace Saé
         private TranslateTransform camera;
         public event Action CleCollectee;
         public bool HasKey { get; private set; } = false;
+        public bool enPause = false;
         public string orientationPerso = "Face";
         private int nb = 0;
         private int sol = 60;
@@ -95,31 +96,31 @@ namespace Saé
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
+            if ((e.Key == UCParametres.Gauche && Canvas.GetLeft(imgPerso) <= -30 || e.Key == UCParametres.Droite && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
             
-            else if (HasKey == false && !enSaut)
+            else if (HasKey == false && !enSaut && !enPause)
             {
                 MainWindow.bruitageSonSaut.Stop();
                 MainWindow.bruitageSonPas.Stop();
-                if (e.Key == Key.Right)
+                if (e.Key == UCParametres.Droite)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Droite";
                 }
-                else if (e.Key == Key.Left)
+                else if (e.Key == UCParametres.Gauche)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Gauche";
                 }
-                else if (e.Key == Key.Down)
+                else if (e.Key == UCParametres.Bas)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
                     MainWindow.bruitageSonPas.Play();
                 }
-                else if (e.Key == Key.Up && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
+                else if (e.Key == UCParametres.Haut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
                 {
                     enSaut = true;
                     vitesseSaut = 30;
@@ -134,10 +135,13 @@ namespace Saé
 
         private void canvasJeu_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left && !enSaut)
-                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
-            else if (e.Key == Key.Right && !enSaut)
-                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+            if (!enSaut && !enPause)
+            {
+                if (e.Key == UCParametres.Gauche)
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
+                else if (e.Key == UCParametres.Droite)
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+            }
         }
 
         public void DeplaceGauche(Image image, double pas)
@@ -194,6 +198,7 @@ namespace Saé
         {
             minuterie.Stop();
             MainWindow.musiqueFond.Pause();
+            enPause = true;
             UCPauseJeu ucPause = new UCPauseJeu();
             butPause.Visibility = Visibility.Collapsed;
             canvasJeu.Children.Add(ucPause);
@@ -204,11 +209,13 @@ namespace Saé
                 butPause.Visibility = Visibility.Visible;
                 minuterie.Start();
                 MainWindow.musiqueFond.Play();
+                enPause = false;
             };
             ucPause.butQuitter.Click += (s, args) =>
             {
                 butPause.Visibility = Visibility.Visible;
                 MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                enPause = false;
                 mainWindow.AfficheMenu();
             };
             ucPause.butParametres.Click += (s, args) =>

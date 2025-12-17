@@ -50,6 +50,7 @@
     <None Remove="images\imgRetour.png" />
     <None Remove="images\imgSuivant.png" />
     <None Remove="images\imgValider.png" />
+    <None Remove="images\imgVide.png" />
     <None Remove="images\logoDesert.png" />
     <None Remove="images\logoForet.png" />
     <None Remove="images\logoPlage.png" />
@@ -109,6 +110,7 @@
     <Resource Include="images\imgRetour.png" />
     <Resource Include="images\imgSuivant.png" />
     <Resource Include="images\imgValider.png" />
+    <Resource Include="images\imgVide.png" />
     <Resource Include="images\logoDesert.png" />
     <Resource Include="images\logoForet.png" />
     <Resource Include="images\logoPlage.png" />

@@ -93,6 +93,13 @@ namespace Saé
 
         public void RetourMenu_Click(object sender, RoutedEventArgs e)
         {
+            UCParametres uc = ZoneJeu.Content as UCParametres;
+            if (uc != null)
+            {
+                uc.waitingButton = null;
+                uc.PreviewKeyDown -= uc.UCParametres_KeyDown;
+            }
+
             AfficheMenu();
         }
 
