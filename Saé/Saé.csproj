@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="images\boutonPause.png" />
     <None Remove="images\FEMEU.png" />
+    <None Remove="images\fondChoixPerso.png" />
     <None Remove="images\fondDesert1.png" />
     <None Remove="images\fondDesert2.png" />
     <None Remove="images\fondForet1.jpeg" />
@@ -22,6 +23,8 @@
     <None Remove="images\GagneDesert.png" />
     <None Remove="images\GagneForet.png" />
     <None Remove="images\GagnePlage.png" />
+    <None Remove="images\imgChoixDuNiveau.png" />
+    <None Remove="images\imgChoixPerso.png" />
     <None Remove="images\imgContinuer.png" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroite.png" />
@@ -47,6 +50,7 @@
     <None Remove="images\imgJouer.png" />
     <None Remove="images\imgParametres.png" />
     <None Remove="images\imgQuitter.png" />
+    <None Remove="images\imgRegles.png" />
     <None Remove="images\imgRetour.png" />
     <None Remove="images\imgSuivant.png" />
     <None Remove="images\imgValider.png" />
@@ -70,6 +74,7 @@
     <Resource Include="images\cleDesert.png" />
     <Resource Include="images\cleForet.png" />
     <Resource Include="images\clePlage.png" />
+    <Resource Include="images\fondChoixPerso.png" />
     <Resource Include="images\fondDesert1.png" />
     <Resource Include="images\fondDesert2.png" />
     <Resource Include="images\fondForet1.jpeg" />
@@ -81,6 +86,7 @@
     <Resource Include="images\GagneDesert.png" />
     <Resource Include="images\GagneForet.png" />
     <Resource Include="images\GagnePlage.png" />
+    <Resource Include="images\imgChoixPerso.png" />
     <Resource Include="images\imgFemmeDroiteMarche2.png" />
     <Resource Include="images\imgContinuer.png" />
     <Resource Include="images\imgFemmeDroite.png" />
@@ -107,6 +113,7 @@
     <Resource Include="images\imgJouer.png" />
     <Resource Include="images\imgParametres.png" />
     <Resource Include="images\imgQuitter.png" />
+    <Resource Include="images\imgRegles.png" />
     <Resource Include="images\imgRetour.png" />
     <Resource Include="images\imgSuivant.png" />
     <Resource Include="images\imgValider.png" />
@@ -115,8 +122,6 @@
     <Resource Include="images\logoForet.png" />
     <Resource Include="images\logoPlage.png" />
     <Resource Include="images\titreMenu.png" />
-    <Resource Include="images\titreNiveaux.png" />
-    <Resource Include="images\titreParametres.png" />
     <Content Include="son\sonCle.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -135,6 +140,11 @@
     <Content Include="son\sonPiece.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\imgChoixDuNiveau.png" />
+    <Resource Include="images\titreParametres.png" />
   </ItemGroup>
 
 </Project>

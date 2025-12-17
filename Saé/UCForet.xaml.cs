@@ -136,14 +136,14 @@ namespace Saé
 
         private void canvasJeu_KeyUp(object sender, KeyEventArgs e)
         {
-            if (!enSaut && !enPause)
+            if (HasKey == false && !enSaut && !enPause)
             {
                 if (e.Key == UCParametres.Gauche)
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
                 else if (e.Key == UCParametres.Droite)
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+                VerifierCle();
             }
-            VerifierCle();
         }
 
         public void DeplaceGauche(Image image, double pas)
