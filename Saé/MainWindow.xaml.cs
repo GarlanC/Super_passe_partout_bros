@@ -27,6 +27,13 @@ namespace Saé
         public static int nbCleForet = 0;
         public static int nbCleDesert = 0;
         public static int nbClePlage = 0;
+        public static int cadenasForet = 0;
+        public static int cadenasDesert = 0;
+        public static int cadenasPlage = 0;
+        public static bool cadenasForetDebloque = false;
+        public static bool cadenasDesertDebloque = false;
+        public static bool cadenasPlageDebloque = false;
+
         public static string Perso { get; set; }
         public static int pasPerso { get; set; } = 5;
         public static int volumeFond { get; set; } = 100;
@@ -75,6 +82,29 @@ namespace Saé
 
         }
 
+        private void AffichePorte(object sender, RoutedEventArgs e)
+        {
+            UCPorte uc = new UCPorte();
+            ZoneJeu.Content = uc;
+            uc.butRetour.Click += RetourMenu_Click;
+            uc.txtCptCleForet.Text = $"Clé foret : {nbCleForet}";
+            uc.txtCptCleDesert.Text = $"Clé desert : {nbCleDesert}";
+            uc.txtCptClePlage.Text = $"Clé plage : {nbClePlage}";
+            uc.OuvrirPorte += OuvrirPorte;
+
+        }
+
+        private void OuvrirPorte()
+        {
+            UCFinJeu uc = new UCFinJeu();
+            ZoneJeu.Content = uc;
+        }
+
+        private void CadenasForet()
+        {
+            cadenasForet += 1;
+        }
+
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)
         {
             UCChoixPerso uc = new UCChoixPerso();
@@ -90,6 +120,7 @@ namespace Saé
             uc.butDesert.Click += LancerDesert;
             uc.butForet.Click += LancerForet;
             uc.butPlage.Click += LancerPlage;
+            uc.butPorte.Click += AffichePorte;
 
         }
 
@@ -129,18 +160,11 @@ namespace Saé
             uc.CleCollectee += AgagnePlage;
         }
 
-        private void AgagnePlage()
-        {
-            UCGagnePlage uc = new UCGagnePlage();
-            ZoneJeu.Content = uc;
-            nbClePlage += 1;
-            uc.butSuivant.Click += RetourMenu_Click;
-        }
-
         private void LancerDesert(object sender, RoutedEventArgs e)
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
+            uc.CleCollectee += AgagneDesert;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)
@@ -162,14 +186,17 @@ namespace Saé
         {
             UCGagneDesert uc = new UCGagneDesert();
             ZoneJeu.Content = uc;
-            uc.butSuivant.Click += ChoixNiveau;
+            uc.butSuivant.Click += RetourMenu_Click;
+            nbCleDesert += 1;
         }
 
         private void AgagnePlage()
         {
             UCGagnePlage uc = new UCGagnePlage();
             ZoneJeu.Content = uc;
-            uc.butSuivant.Click += ChoixNiveau;
+            uc.butSuivant.Click += RetourMenu_Click;
+            nbClePlage += 1;
+            
         }
     }
 }

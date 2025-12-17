@@ -11,6 +11,9 @@
   <ItemGroup>
     <None Remove="images\boutonPause.png" />
     <None Remove="images\butJouer.png" />
+    <None Remove="images\cadenasDesert.png" />
+    <None Remove="images\cadenasForet.png" />
+    <None Remove="images\cadenasPlage.png" />
     <None Remove="images\cleDesert.png" />
     <None Remove="images\cleForet.png" />
     <None Remove="images\clePlage.png" />
@@ -26,6 +29,7 @@
     <None Remove="images\GagneDesert.png" />
     <None Remove="images\GagneForet.png" />
     <None Remove="images\GagnePlage.png" />
+    <None Remove="images\imgButPorte.png" />
     <None Remove="images\imgContinuer.png" />
     <None Remove="images\imgFemmeDroite.jpg" />
     <None Remove="images\imgFemmeDroite.png" />
@@ -54,10 +58,13 @@
     <None Remove="images\imgRetour.png" />
     <None Remove="images\imgSuivant.png" />
     <None Remove="images\imgValider.png" />
+    <None Remove="images\imgVictoire.png" />
     <None Remove="images\imgVide.png" />
     <None Remove="images\logoDesert.png" />
     <None Remove="images\logoForet.png" />
     <None Remove="images\logoPlage.png" />
+    <None Remove="images\plateformeForet.png" />
+    <None Remove="images\porte.png" />
     <None Remove="images\titre.png" />
     <None Remove="images\titreNiveaux.png" />
     <None Remove="images\titreParametres.png" />
@@ -71,6 +78,9 @@
 
   <ItemGroup>
     <Resource Include="images\boutonPause.png" />
+    <Resource Include="images\cadenasDesert.png" />
+    <Resource Include="images\cadenasForet.png" />
+    <Resource Include="images\cadenasPlage.png" />
     <Resource Include="images\cleDesert.png" />
     <Resource Include="images\cleForet.png" />
     <Resource Include="images\clePlage.png" />
@@ -85,6 +95,7 @@
     <Resource Include="images\GagneDesert.png" />
     <Resource Include="images\GagneForet.png" />
     <Resource Include="images\GagnePlage.png" />
+    <Resource Include="images\imgButPorte.png" />
     <Resource Include="images\imgFemmeDroiteMarche2.png" />
     <Resource Include="images\imgContinuer.png" />
     <Resource Include="images\imgFemmeDroite.png" />
@@ -114,10 +125,13 @@
     <Resource Include="images\imgRetour.png" />
     <Resource Include="images\imgSuivant.png" />
     <Resource Include="images\imgValider.png" />
+    <Resource Include="images\imgVictoire.png" />
     <Resource Include="images\imgVide.png" />
     <Resource Include="images\logoDesert.png" />
     <Resource Include="images\logoForet.png" />
     <Resource Include="images\logoPlage.png" />
+    <Resource Include="images\plateformeForet.png" />
+    <Resource Include="images\porte.png" />
     <Resource Include="images\titreMenu.png" />
     <Resource Include="images\titreNiveaux.png" />
     <Resource Include="images\titreParametres.png" />

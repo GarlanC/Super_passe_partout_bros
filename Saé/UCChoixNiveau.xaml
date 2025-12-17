@@ -27,6 +27,9 @@
                 <Image Source="/images/logoPlage.png" Width="140" Height="140"/>
             </Button.Content>
         </Button>
+        <Button x:Name="butPorte" HorizontalAlignment="Left" Margin="579,340,0,0" VerticalAlignment="Top" Height="60" Width="180" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Image Source="/images/imgButPorte.png" Stretch="Fill"/>
+        </Button>
 
     </Grid>
 </UserControl>
