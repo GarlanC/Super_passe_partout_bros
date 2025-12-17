@@ -74,7 +74,7 @@ namespace Saé
         {
             UCMenu uc = new UCMenu();
             ZoneJeu.Content = uc;
-            uc.butJouer.Click += AfficherChoixPerso;
+            uc.butJouer.Click += AfficherRegles;
             uc.butParametres.Click += AfficherParametres;
             uc.txtCptCleForet.Text = $"Clé foret : {nbCleForet}";
             uc.txtCptCleDesert.Text = $"Clé desert : {nbCleDesert}";
@@ -103,6 +103,13 @@ namespace Saé
         private void CadenasForet()
         {
             cadenasForet += 1;
+        }
+
+        private void AfficherRegles(object sender, RoutedEventArgs e)
+        {
+            UCRegles uc = new UCRegles();
+            ZoneJeu.Content = uc;
+            uc.butContinuer.Click += AfficherChoixPerso;
         }
 
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)

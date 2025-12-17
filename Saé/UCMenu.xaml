@@ -18,5 +18,8 @@
         <TextBlock x:Name="txtCptCleForet" HorizontalAlignment="Left" Margin="30,315,0,0" TextWrapping="Wrap" Text="txx" VerticalAlignment="Top" FontSize="18" FontFamily="Comic Sans MS" Background="#FF1BC144"/>
         <TextBlock x:Name="txtCptCleDesert" HorizontalAlignment="Left" Margin="30,345,0,0" TextWrapping="Wrap" Text="txxt" VerticalAlignment="Top" FontSize="18" FontFamily="Comic Sans MS" Background="#FFEFE13F"/>
         <TextBlock x:Name="txtCptClePlage" HorizontalAlignment="Left" Margin="30,375,0,0" TextWrapping="Wrap" Text="txt" VerticalAlignment="Top" RenderTransformOrigin="-0.311,0.453" FontSize="18" FontFamily="Comic Sans MS" Background="#FF29BACC"/>
+        <Button x:Name="butQuitter" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="180" Background="Transparent" BorderBrush="{x:Null}" Margin="0,340,0,0" Click="butQuitter_Click">
+            <Image Source="/images/imgQuitter.png" Stretch="Fill"/>
+        </Button>
     </Grid>
 </UserControl>

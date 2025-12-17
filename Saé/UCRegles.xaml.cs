@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCMenu.xaml
+    /// Logique d'interaction pour UCRegles.xaml
     /// </summary>
-    public partial class UCMenu : UserControl
+    public partial class UCRegles : UserControl
     {
-        public UCMenu()
+        public UCRegles()
         {
             InitializeComponent();
-            
-        }
-
-        private void butQuitter_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
