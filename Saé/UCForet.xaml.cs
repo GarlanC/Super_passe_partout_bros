@@ -97,7 +97,7 @@ namespace Saé
 
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == UCParametres.Gauche && Canvas.GetLeft(imgPerso) <= -30 || e.Key == UCParametres.Droite && Canvas.GetLeft(imgPerso) > 2 * ActualWidth - imgPerso.Width + 20)difs && !enSaut)
+            if ((e.Key == UCParametres.Gauche && Canvas.GetLeft(imgPerso) <= -30 || e.Key == UCParametres.Droite && Canvas.GetLeft(imgPerso) > 2 * ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
             
             else if (HasKey == false && !enSaut && !enPause)
