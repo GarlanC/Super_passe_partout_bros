@@ -7,12 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Image Source="/fond_menu.png" Stretch="Fill"/>
-        <Image Source="/images/fond_menu.png" Stretch="Fill"/>
-        <Image Margin="224,10,224,201" Source="/images/titre.png" Stretch="Fill"/>
-        <Button x:Name="butJouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
-        <Button x:Name="butParametres" Content="Paramètres" HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
-        <TextBlock x:Name="txtCptClés" HorizontalAlignment="Left" Margin="60,40,0,0" TextWrapping="Wrap" Text="Clés : 0" VerticalAlignment="Top"/>
-
+        <Image Source="/images/fondMenu.png" Stretch="Fill"/>
+        <Image Margin="0,15,0,0" Source="/images/titreMenu.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600"/>
+        <Button x:Name="butJouer" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Center" Height="60" Width="180" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Image Source="/images/imgJouer.png" Stretch="Fill"/>
+        </Button>
+        <Button x:Name="butParametres" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Center" Height="60" Width="180" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Image Source="/images/imgParametres.png" Stretch="Fill"/>
+        </Button>
+        <TextBlock x:Name="txtCptCleForet" HorizontalAlignment="Left" Margin="30,315,0,0" TextWrapping="Wrap" Text="txx" VerticalAlignment="Top" FontSize="18" FontFamily="Comic Sans MS" Background="#FF1BC144"/>
+        <TextBlock x:Name="txtCptCleDesert" HorizontalAlignment="Left" Margin="30,345,0,0" TextWrapping="Wrap" Text="txxt" VerticalAlignment="Top" FontSize="18" FontFamily="Comic Sans MS" Background="#FFEFE13F"/>
+        <TextBlock x:Name="txtCptClePlage" HorizontalAlignment="Left" Margin="30,375,0,0" TextWrapping="Wrap" Text="txt" VerticalAlignment="Top" RenderTransformOrigin="-0.311,0.453" FontSize="18" FontFamily="Comic Sans MS" Background="#FF29BACC"/>
     </Grid>
 </UserControl>

@@ -31,14 +31,15 @@ namespace Saé
         private BitmapImage[] imgPersoGauche = new BitmapImage[3];
         private DispatcherTimer timerSaut;
         private DispatcherTimer minuterie;
-        public bool HasKey { get; private set; } = false;
+        private TranslateTransform camera;
         public event Action CleCollectee;
+        public bool HasKey { get; private set; } = false;
+        public bool enPause = false;
         public string orientationPerso = "Face";
         private int nb = 0;
         private int sol = 60;
         private bool enSaut = false;
         private int vitesseSaut = 0;
-        private TranslateTransform camera;
         private double largeurNiveau = 1600;
 
         public UCForet()
@@ -47,8 +48,7 @@ namespace Saé
             InitializeImagesMarche();
             InitializeTimer();
             MainWindow.InitializeSonFond();
-            MainWindow.InitializeSonPas();
-            MainWindow.InitializeSonSaut();
+            MainWindow.musiqueFond.Play();
 
             camera = cameraTransform;
 
@@ -79,48 +79,48 @@ namespace Saé
             minuterie.Interval = TimeSpan.FromMilliseconds(16);
             minuterie.Start();
         }
+
         private void VerifierCle()
         {
             double xPerso = Canvas.GetLeft(imgPerso);
             double xCle = Canvas.GetLeft(cleForet);
 
-
-            if (xPerso > xCle)
+            if (xPerso + 30 >= xCle)
             {
                 cleForet.Visibility = Visibility.Hidden;
                 HasKey = true;
+                MainWindow.bruitageSonCle.Play();
                 CleCollectee.Invoke();
             }
         }
 
-
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
+            if ((e.Key == UCParametres.Gauche && Canvas.GetLeft(imgPerso) <= -30 || e.Key == UCParametres.Droite && Canvas.GetLeft(imgPerso) > 2*ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
             
-            else
+            else if (HasKey == false && !enSaut && !enPause)
             {
                 MainWindow.bruitageSonSaut.Stop();
                 MainWindow.bruitageSonPas.Stop();
-                if (e.Key == Key.Right && !enSaut && HasKey == false)
+                if (e.Key == UCParametres.Droite)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Droite";
                 }
-                else if (e.Key == Key.Left && !enSaut && HasKey == false)
+                else if (e.Key == UCParametres.Gauche)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Gauche";
                 }
-                else if (e.Key == Key.Down && !enSaut && HasKey == false)
+                else if (e.Key == UCParametres.Bas)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
                     MainWindow.bruitageSonPas.Play();
                 }
-                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90) && HasKey== false)
+                else if (e.Key == UCParametres.Haut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
                 {
                     enSaut = true;
                     vitesseSaut = 30;
@@ -129,17 +129,19 @@ namespace Saé
 
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}Saut.png"));
                 }
-                if (HasKey == false)
-                    VerifierCle();
+                VerifierCle();
             }
         }
 
         private void canvasJeu_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left && !enSaut)
-                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
-            else if (e.Key == Key.Right && !enSaut)
-                imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+            if (!enSaut && !enPause)
+            {
+                if (e.Key == UCParametres.Gauche)
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Gauche.png"));
+                else if (e.Key == UCParametres.Droite)
+                    imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
+            }
         }
 
         public void DeplaceGauche(Image image, double pas)
@@ -195,42 +197,58 @@ namespace Saé
         private void butPause_Click(object sender, RoutedEventArgs e)
         {
             minuterie.Stop();
-            bool parametreOuvert = true;
-            while (parametreOuvert)
+            MainWindow.musiqueFond.Pause();
+            enPause = true;
+            UCPauseJeu ucPause = new UCPauseJeu();
+            butPause.Visibility = Visibility.Collapsed;
+            canvasJeu.Children.Add(ucPause);
+            ucPause.RenderTransform = new TranslateTransform(-camera.X, 0);
+            ucPause.butContinuer.Click += (s, args) =>
+            {
+                canvasJeu.Children.Remove(ucPause);
+                butPause.Visibility = Visibility.Visible;
+                minuterie.Start();
+                MainWindow.musiqueFond.Play();
+                enPause = false;
+            };
+            ucPause.butQuitter.Click += (s, args) =>
+            {
+                butPause.Visibility = Visibility.Visible;
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                enPause = false;
+                mainWindow.AfficheMenu();
+            };
+            ucPause.butParametres.Click += (s, args) =>
             {
                 UCParametres uc = new UCParametres();
+                uc.RenderTransform = new TranslateTransform(-camera.X, 0);
                 canvasJeu.Children.Add(uc);
                 uc.butRetour.Click += (sender, args) =>
                 {
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
-                    parametreOuvert = false;
                 };
                 uc.butValider.Click += (sender, args) =>
                 {
                     MainWindow.volumeFond = (int)uc.sliderSon.Value;
-                    MainWindow.musiqueFond.Volume = Math.Clamp(MainWindow.volumeFond / 100.0 , 0.0, 1.0);
+                    MainWindow.musiqueFond.Volume = Math.Clamp(MainWindow.volumeFond / 100.0, 0.0, 1.0);
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
-                    parametreOuvert = false;
                 };
-                break;
-            }
+            };
         }
 
         private void UpdateCamera()
         {
-            double persoX = Canvas.GetLeft(imgPerso);
+            double xPerso = Canvas.GetLeft(imgPerso);
             double ecranCentre = ActualWidth / 2;
 
-            // Caméra cible
-            double cameraX = -persoX + ecranCentre - imgPerso.Width / 2;
+            double xCamera = ecranCentre - xPerso - imgPerso.Width / 2;
 
-            // Limites gauche / droite
-            cameraX = Math.Min(0, cameraX);
-            cameraX = Math.Max(-(largeurNiveau - ActualWidth), cameraX);
+            xCamera = Math.Min(0, xCamera);
+            xCamera = Math.Max(-(largeurNiveau - ActualWidth), xCamera);
 
-            camera.X = cameraX;
+            camera.X = xCamera;
         }
     }
 }

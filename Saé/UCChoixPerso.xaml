@@ -8,7 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label x:Name="labConsigne" Content="Choix du personnage" FontSize="25" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,350"/>
-        <Button x:Name="butJouer" Content="Jouer" FontSize="20" Width="250" Height="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" IsEnabled="False"/>
+        <Button x:Name="butJouer" Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" Background="{x:Null}" BorderBrush="{x:Null}" IsHitTestVisible="False">
+            <Image Source="/images/imgJouer.png" Stretch="Fill"/>
+        </Button>
         <RadioButton x:Name="rbHomme" Width="150" Height="150" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,450,0" Click="rbHomme_Click" >
             <RadioButton.Content>
                 <Image Source="/images/imgHommeFace.png" Width="150" Height="150"/>

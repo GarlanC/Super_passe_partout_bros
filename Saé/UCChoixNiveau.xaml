@@ -8,7 +8,9 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Image Source="/images/fondSelections.png" Stretch="Fill"/>
-        <Button x:Name="butRetourNiveaux" Content="Retour" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="56" Width="211" FontSize="22" FontFamily="Ravie"/>
+        <Button x:Name="butRetourNiveaux" HorizontalAlignment="Left" Margin="50,340,0,0" VerticalAlignment="Top" Height="60" Width="220" Background="{x:Null}" BorderBrush="{x:Null}">
+            <Image Source="/images/imgRetour.png" Stretch="Fill"/>
+        </Button>
         <Image Margin="191,-20,191,245" Source="/images/titreNiveaux.png" Stretch="Fill"/>
         <Button x:Name="butForet" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,170,0,0" Background="{x:Null}" BorderBrush="{x:Null}" >
             <Button.Content>

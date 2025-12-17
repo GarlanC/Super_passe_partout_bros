@@ -25,13 +25,14 @@ namespace Saé
         private BitmapImage[] imgPersoGauche = new BitmapImage[3];
         private DispatcherTimer timerSaut;
         private DispatcherTimer minuterie;
-
+        private TranslateTransform camera;
+        public event Action CleCollectee;
+        public bool HasKey { get; private set; } = false;
         public string orientationPerso = "Face";
         private int nb = 0;
         private int sol = 60;
         private bool enSaut = false;
         private int vitesseSaut = 0;
-        private TranslateTransform camera;
         private double largeurNiveau = 1600;
 
         public UCPlage()
@@ -40,8 +41,7 @@ namespace Saé
             InitializeImagesMarche();
             InitializeTimer();
             MainWindow.InitializeSonFond();
-            MainWindow.InitializeSonPas();
-            MainWindow.InitializeSonSaut();
+            MainWindow.musiqueFond.Play();
 
             camera = cameraTransform;
 
@@ -55,6 +55,7 @@ namespace Saé
 
             imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}.png"));
         }
+
 
         private void InitializeImagesMarche()
         {
@@ -72,32 +73,47 @@ namespace Saé
             minuterie.Start();
         }
 
+        private void VerifierCle()
+        {
+            double xPerso = Canvas.GetLeft(imgPerso);
+            double xCle = Canvas.GetLeft(clePlage);
+
+            if (xPerso + 30 >= xCle)
+            {
+                clePlage.Visibility = Visibility.Hidden;
+                MainWindow.bruitageSonCle.Play();
+                HasKey = true;
+                CleCollectee.Invoke();
+            }
+        }
+
         public void canvasJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key == Key.Left && Canvas.GetLeft(imgPerso) <= -30 || e.Key == Key.Right && Canvas.GetLeft(imgPerso) > 2 * ActualWidth - imgPerso.Width + 20) && !enSaut)
                 return;
-            else
+
+            else if (HasKey == false && !enSaut)
             {
                 MainWindow.bruitageSonSaut.Stop();
                 MainWindow.bruitageSonPas.Stop();
-                if (e.Key == Key.Right && !enSaut)
+                if (e.Key == Key.Right)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Droite";
                 }
-                else if (e.Key == Key.Left && !enSaut)
+                else if (e.Key == Key.Left)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
                     MainWindow.bruitageSonPas.Play();
                     orientationPerso = "Gauche";
                 }
-                else if (e.Key == Key.Down && !enSaut)
+                else if (e.Key == Key.Down)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
                     MainWindow.bruitageSonPas.Play();
                 }
-                else if (e.Key == Key.Up && !enSaut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
+                else if (e.Key == Key.Up && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
                 {
                     enSaut = true;
                     vitesseSaut = 30;
@@ -106,6 +122,7 @@ namespace Saé
 
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}{orientationPerso}Saut.png"));
                 }
+                VerifierCle();
             }
         }
 
@@ -170,16 +187,33 @@ namespace Saé
         private void butPause_Click(object sender, RoutedEventArgs e)
         {
             minuterie.Stop();
-            bool parametreOuvert = true;
-            while (parametreOuvert)
+            MainWindow.musiqueFond.Pause();
+            UCPauseJeu ucPause = new UCPauseJeu();
+            butPause.Visibility = Visibility.Collapsed;
+            canvasJeu.Children.Add(ucPause);
+            ucPause.RenderTransform = new TranslateTransform(-camera.X, 0);
+            ucPause.butContinuer.Click += (s, args) =>
+            {
+                canvasJeu.Children.Remove(ucPause);
+                butPause.Visibility = Visibility.Visible;
+                minuterie.Start();
+                MainWindow.musiqueFond.Play();
+            };
+            ucPause.butQuitter.Click += (s, args) =>
+            {
+                butPause.Visibility = Visibility.Visible;
+                MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.AfficheMenu();
+            };
+            ucPause.butParametres.Click += (s, args) =>
             {
                 UCParametres uc = new UCParametres();
+                uc.RenderTransform = new TranslateTransform(-camera.X, 0);
                 canvasJeu.Children.Add(uc);
                 uc.butRetour.Click += (sender, args) =>
                 {
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
-                    parametreOuvert = false;
                 };
                 uc.butValider.Click += (sender, args) =>
                 {
@@ -187,22 +221,21 @@ namespace Saé
                     MainWindow.musiqueFond.Volume = Math.Clamp(MainWindow.volumeFond / 100.0, 0.0, 1.0);
                     canvasJeu.Children.Remove(uc);
                     minuterie.Start();
-                    parametreOuvert = false;
                 };
-                break;
-            }
+            };
         }
 
         private void UpdateCamera()
         {
-            double cosPerso = Canvas.GetLeft(imgPerso);
-            double centreEcran = ActualWidth / 2;
-            double cosCamera = -cosPerso + centreEcran - imgPerso.Width / 2;
+            double xPerso = Canvas.GetLeft(imgPerso);
+            double ecranCentre = ActualWidth / 2;
 
-            cosCamera = Math.Min(0, cosCamera);
-            cosCamera = Math.Max(-(largeurNiveau - ActualWidth), cosCamera);
+            double xCamera = ecranCentre - xPerso - imgPerso.Width / 2;
 
-            camera.X = cosCamera;
+            xCamera = Math.Min(0, xCamera);
+            xCamera = Math.Max(-(largeurNiveau - ActualWidth), xCamera);
+
+            camera.X = xCamera;
         }
     }
 }

@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace Saé
 {
     /// <summary>
-    /// Logique d'interaction pour UCChoixPerso.xaml
+    /// Logique d'interaction pour PauseJeu.xaml
     /// </summary>
-    public partial class UCChoixPerso : UserControl
+    public partial class UCPauseJeu : UserControl
     {
-        public UCChoixPerso()
+        public UCPauseJeu()
         {
             InitializeComponent();
-        }
-
-        private void rbHomme_Click(object sender, RoutedEventArgs e)
-        {
-            butJouer.IsHitTestVisible = true;
-            MainWindow.Perso = "Homme";
-        }
-
-        private void rbFemme_Click(object sender, RoutedEventArgs e)
-        {
-            butJouer.IsHitTestVisible = true;
-            MainWindow.Perso = "Femme";
         }
     }
 }

@@ -29,10 +29,15 @@ namespace Saé
         public static string Perso { get; set; }
         public static int pasPerso { get; set; } = 5;
         public static int volumeFond { get; set; } = 100;
+        public static string[] bruitages = { "Pas", "Saut", "Piece", "Cle" };
 
         public MainWindow()
         {
             InitializeComponent();
+            bruitageSonPas = InitializeSon("sonMarcheTerre.wav");
+            bruitageSonSaut = InitializeSon("sonSaut.wav");
+            bruitageSonPiece = InitializeSon("sonPiece.wav");
+            bruitageSonCle = InitializeSon("sonCle.wav");
             AfficheMenu();
             
         }
@@ -44,45 +49,16 @@ namespace Saé
             musiqueFond = new MediaPlayer();
             musiqueFond.Volume = volumeFond / 100;
             musiqueFond.Open(new Uri(path, UriKind.Absolute));
-            musiqueFond.Play();
             musiqueFond.MediaEnded += (_, __) => { musiqueFond.Position = TimeSpan.Zero; musiqueFond.Play(); };
-            ;
         }
 
-        public static void InitializeSonPas()
+        public static MediaPlayer InitializeSon(string sonInit)
         {
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "son", "sonMarcheTerre.wav");
-
-            bruitageSonPas = new MediaPlayer();
-            bruitageSonPas.Volume = volumeFond / 100;
-            bruitageSonPas.Open(new Uri(path, UriKind.Absolute));
-        }
-
-        public static void InitializeSonSaut()
-        {
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "son", "sonJump.wav");
-
-            bruitageSonSaut = new MediaPlayer();
-            bruitageSonSaut.Volume = volumeFond / 100;
-            bruitageSonSaut.Open(new Uri(path, UriKind.Absolute));
-        }
-
-        public static void InitializeSonPiece()
-        {
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "son", "sonPiece.wav");
-
-            bruitageSonPiece = new MediaPlayer();
-            bruitageSonPiece.Volume = volumeFond / 100;
-            bruitageSonPiece.Open(new Uri(path, UriKind.Absolute));
-        }
-
-        public static void InitializeSonCle()
-        {
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "son", "sonCle.wav");
-
-            bruitageSonCle = new MediaPlayer();
-            bruitageSonCle.Volume = volumeFond / 100;
-            bruitageSonCle.Open(new Uri(path, UriKind.Absolute));
+            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "son", sonInit);
+            MediaPlayer bruitage = new MediaPlayer();
+            bruitage.Volume = volumeFond / 100;
+            bruitage.Open(new Uri(path, UriKind.Absolute));
+            return bruitage;
         }
 
         public void AfficheMenu()
@@ -91,7 +67,10 @@ namespace Saé
             ZoneJeu.Content = uc;
             uc.butJouer.Click += AfficherChoixPerso;
             uc.butParametres.Click += AfficherParametres;
-            uc.txtCptClés.Text = $"Clés foret : {nbCleForet}";
+            uc.txtCptCleForet.Text = $"Clé foret : {nbCleForet}";
+            uc.txtCptCleDesert.Text = $"Clé desert : {nbCleDesert}";
+            uc.txtCptClePlage.Text = $"Clé plage : {nbClePlage}";
+
         }
 
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)
@@ -122,6 +101,13 @@ namespace Saé
 
         public void RetourMenu_Click(object sender, RoutedEventArgs e)
         {
+            UCParametres uc = ZoneJeu.Content as UCParametres;
+            if (uc != null)
+            {
+                uc.waitingButton = null;
+                uc.PreviewKeyDown -= uc.UCParametres_KeyDown;
+            }
+
             AfficheMenu();
         }
 
@@ -138,25 +124,37 @@ namespace Saé
             UCPlage uc = new UCPlage();
             ZoneJeu.Content = uc;
             uc.butPause.Click += AfficherParametres;
+            uc.CleCollectee += AgagnePlage;
+        }
+
+        private void AgagnePlage()
+        {
+            UCGagnePlage uc = new UCGagnePlage();
+            ZoneJeu.Content = uc;
+            nbClePlage += 1;
+            uc.butSuivant.Click += RetourMenu_Click;
         }
 
         private void LancerDesert(object sender, RoutedEventArgs e)
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
+            uc.CleCollectee += AgagneDesert;
+        }
+
+        private void AgagneDesert()
+        {
+            UCGagneDesert uc = new UCGagneDesert();
+            ZoneJeu.Content = uc;
+            nbCleDesert += 1;
+            uc.butSuivant.Click += RetourMenu_Click;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)
         {
             UCForet uc = new UCForet();
             ZoneJeu.Content = uc;
-            uc.CleCollectee += CleForetCollectee;
-        }
-
-        private void CleForetCollectee()
-        {
-            AgagneForet();
-
+            uc.CleCollectee += AgagneForet;
         }
 
         private void AgagneForet()
