@@ -89,6 +89,7 @@ namespace Saé
             {
                 cleForet.Visibility = Visibility.Hidden;
                 HasKey = true;
+                MainWindow.bruitageSonCle.Stop();
                 MainWindow.bruitageSonCle.Play();
                 CleCollectee.Invoke();
             }
@@ -102,23 +103,23 @@ namespace Saé
             else if (HasKey == false && !enSaut && !enPause)
             {
                 MainWindow.bruitageSonSaut.Stop();
-                MainWindow.bruitageSonPas.Stop();
+                MainWindow.bruitageSonTerre.Stop();
                 if (e.Key == UCParametres.Droite)
                 {
                     DeplaceDroite(imgPerso, MainWindow.pasPerso);
-                    MainWindow.bruitageSonPas.Play();
+                    MainWindow.bruitageSonTerre.Play();
                     orientationPerso = "Droite";
                 }
                 else if (e.Key == UCParametres.Gauche)
                 {
                     DeplaceGauche(imgPerso, MainWindow.pasPerso);
-                    MainWindow.bruitageSonPas.Play();
+                    MainWindow.bruitageSonTerre.Play();
                     orientationPerso = "Gauche";
                 }
                 else if (e.Key == UCParametres.Bas)
                 {
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Face.png"));
-                    MainWindow.bruitageSonPas.Play();
+                    MainWindow.bruitageSonTerre.Play();
                 }
                 else if (e.Key == UCParametres.Haut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
                 {
@@ -142,6 +143,7 @@ namespace Saé
                 else if (e.Key == UCParametres.Droite)
                     imgPerso.Source = new BitmapImage(new Uri($"pack://application:,,,/images/img{MainWindow.Perso}Droite.png"));
             }
+            VerifierCle();
         }
 
         public void DeplaceGauche(Image image, double pas)

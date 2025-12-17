@@ -22,6 +22,11 @@ namespace Saé
     {
         public Button waitingButton;
 
+        private Key oldHaut = Haut;
+        private Key oldBas = Bas;
+        private Key oldGauche = Gauche;
+        private Key oldDroite = Droite;
+
         public static Key Haut = Key.Up;
         public static Key Bas = Key.Down;
         public static Key Gauche = Key.Left;
@@ -34,6 +39,10 @@ namespace Saé
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             sliderSon.Value = MainWindow.volumeFond;
+            txtBas.Text = $"Bas : {Bas}";
+            txtHaut.Text = $"Haut : {Haut}";
+            txtGauche.Text = $"Gauche : {Gauche}";
+            txtDroite.Text = $"Droite : {Droite}";
         }
 
         private void ChangeKey_Click(object sender, RoutedEventArgs e)
@@ -55,11 +64,18 @@ namespace Saé
 
         private void butRetour_Click(object sender, RoutedEventArgs e)
         {
+            Haut = oldHaut;
+            Bas = oldBas;
+            Gauche = oldGauche;
+            Droite = oldDroite;
+
+            txtHaut.Text = $"Haut : {Haut}";
+            txtBas.Text = $"Bas : {Bas}";
+            txtGauche.Text = $"Gauche : {Gauche}";
+            txtDroite.Text = $"Droite : {Droite}";
+
             waitingButton = null;
             this.PreviewKeyDown -= UCParametres_KeyDown;
-
-            MainWindow main = Application.Current.MainWindow as MainWindow;
-            main?.AfficheMenu();
         }
 
         public void UCParametres_KeyDown(object sender, KeyEventArgs e)

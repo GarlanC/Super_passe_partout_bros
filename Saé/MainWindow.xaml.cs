@@ -19,7 +19,8 @@ namespace Saé
     public partial class MainWindow : Window
     {
         public static MediaPlayer musiqueFond { get; private set; }
-        public static MediaPlayer bruitageSonPas { get; private set; }
+        public static MediaPlayer bruitageSonTerre { get; private set; }
+        public static MediaPlayer bruitageSonSable { get; private set; }
         public static MediaPlayer bruitageSonSaut { get; private set; }
         public static MediaPlayer bruitageSonPiece { get; private set; }
         public static MediaPlayer bruitageSonCle { get; private set; }
@@ -34,7 +35,8 @@ namespace Saé
         public MainWindow()
         {
             InitializeComponent();
-            bruitageSonPas = InitializeSon("sonMarcheTerre.wav");
+            bruitageSonTerre = InitializeSon("sonMarcheTerre.wav");
+            bruitageSonSable = InitializeSon("sonMarcheSable.wav");
             bruitageSonSaut = InitializeSon("sonSaut.wav");
             bruitageSonPiece = InitializeSon("sonPiece.wav");
             bruitageSonCle = InitializeSon("sonCle.wav");
@@ -139,15 +141,6 @@ namespace Saé
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
-            uc.CleCollectee += AgagneDesert;
-        }
-
-        private void AgagneDesert()
-        {
-            UCGagneDesert uc = new UCGagneDesert();
-            ZoneJeu.Content = uc;
-            nbCleDesert += 1;
-            uc.butSuivant.Click += RetourMenu_Click;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)
@@ -163,6 +156,20 @@ namespace Saé
             ZoneJeu.Content = uc;
             uc.butSuivant.Click += RetourMenu_Click;
             nbCleForet += 1;
+        }
+
+        private void AgagneDesert()
+        {
+            UCGagneDesert uc = new UCGagneDesert();
+            ZoneJeu.Content = uc;
+            uc.butSuivant.Click += ChoixNiveau;
+        }
+
+        private void AgagnePlage()
+        {
+            UCGagnePlage uc = new UCGagnePlage();
+            ZoneJeu.Content = uc;
+            uc.butSuivant.Click += ChoixNiveau;
         }
     }
 }
