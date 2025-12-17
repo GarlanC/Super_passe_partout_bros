@@ -23,6 +23,12 @@ namespace Saé
         public UCMenu()
         {
             InitializeComponent();
+            
+        }
+
+        private void butQuitter_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

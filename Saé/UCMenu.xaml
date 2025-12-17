@@ -15,5 +15,8 @@
         <Button x:Name="butParametres" HorizontalAlignment="Center" Margin="0,220,0,0" VerticalAlignment="Center" Height="60" Width="180" Background="{x:Null}" BorderBrush="{x:Null}">
             <Image Source="/images/imgParametres.png" Stretch="Fill"/>
         </Button>
+        <Button x:Name="butQuitter" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="180" Background="Transparent" BorderBrush="{x:Null}" Margin="0,340,0,0" Click="butQuitter_Click">
+            <Image Source="/images/imgQuitter.png" Stretch="Fill"/>
+        </Button>
     </Grid>
 </UserControl>

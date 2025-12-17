@@ -9,7 +9,7 @@
              Width="800" Height="450" Loaded="UserControl_Loaded" KeyDown="UCParametres_KeyDown" Focusable="True">
     <Grid>
         <Image Source="/images/fondSelections.png" Stretch="Fill"/>
-        <Image Source="/images/titreParametres.png" VerticalAlignment="Top" HorizontalAlignment="Center" Width="500"/>
+        <Image Source="/images/titreParametres.png" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0,-10,0,0"/>
         <Slider x:Name="sliderSon" Height="25" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center" Minimum="0" Maximum="100" Value="100" Margin="0,150,0,0" SmallChange="1" TickPlacement="TopLeft"  IsSnapToTickEnabled="True"/>
         <Label Content="Volume son :" Width="160" FontSize="20" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,115,10,0"/>
         <TextBlock Text="{Binding ElementName=sliderSon, Path=Value}" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Foreground="White" Margin="110,120,0,0"/>
@@ -44,7 +44,7 @@
             <Image Source="/images/imgRetour.png" Stretch="Fill"/>
         </Button>
         <Button x:Name="butValider" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom" Height="60" Width="200" Background="Transparent" BorderBrush="{x:Null}">
-            <Image Source="/images/imgValider.png" Height="120" VerticalAlignment="Center" Margin="0,0,0,-5" Width="200" />
+            <Image Source="/images/imgValider.png" Height="120" VerticalAlignment="Center" Margin="0,0,0,0" Width="200" />
         </Button>
     </Grid>
 </UserControl>

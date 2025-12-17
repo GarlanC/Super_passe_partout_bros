@@ -9,6 +9,7 @@
     <Grid>
         <Image Source="/images/fondChoixPerso.png" Stretch="Fill"/>
         <Image Source="/images/imgRegles.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="500" />
+        <TextBox Text="Trouvez et récupérez les clés dispersées dans les différents niveaux dans ce mini-jeu" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextWrapping="Wrap" Width="305" BorderBrush="Black" BorderThickness="2" Padding="3" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}" Background="#CCFFFFFF"/>
         <Button x:Name="butContinuer" Width="250" Height="70" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30" Background="{x:Null}" BorderBrush="{x:Null}">
             <Image Source="/images/imgContinuer.png" Stretch="Fill"/>
         </Button>
