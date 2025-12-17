@@ -12,21 +12,14 @@
             <Image Source="/images/imgRetour.png" Stretch="Fill"/>
         </Button>
         <Image Source="/images/imgChoixDuNiveau.png" Width="500" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Button x:Name="butForet" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,170,0,0" Background="{x:Null}" BorderBrush="{x:Null}" >
-            <Button.Content>
-                <Image Source="/images/logoForet.png" Width="140" Height="140"/>
-            </Button.Content>
+        <Button x:Name="butForet" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,170,0,0" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <Image Source="/images/logoForet.png" Width="140" Height="140"/>
         </Button>
         <Button x:Name="butDesert" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,170,0,0" Background="{x:Null}" BorderBrush="{x:Null}" >
-            <Button.Content>
-                <Image Source="/images/logoDesert.png" Width="140" Height="140"/>
-            </Button.Content>
+            <Image Source="/images/logoDesert.png" Width="140" Height="140"/>
         </Button>
-        <Button x:Name="butPlage" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="609,170,0,0" Background="{x:Null}" BorderBrush="{x:Null}" >
-            <Button.Content>
-                <Image Source="/images/logoPlage.png" Width="140" Height="140"/>
-            </Button.Content>
+        <Button x:Name="butPlage" Width="150" Height="150" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,170,30,0" Background="{x:Null}" BorderBrush="{x:Null}" >
+            <Image Source="/images/logoPlage.png" Width="140" Height="140"/>
         </Button>
-
     </Grid>
 </UserControl>

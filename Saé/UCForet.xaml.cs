@@ -124,7 +124,7 @@ namespace Saé
                 else if (e.Key == UCParametres.Haut && (orientationPerso == "Gauche" && Canvas.GetLeft(imgPerso) > -30 + 90 || orientationPerso == "Droite" && Canvas.GetLeft(imgPerso) < 2 * ActualWidth - imgPerso.Width + 20 - 90))
                 {
                     enSaut = true;
-                    vitesseSaut = 30;
+                    vitesseSaut = 25;
                     MainWindow.bruitageSonSaut.Play();
                     timerSaut.Start();
 
