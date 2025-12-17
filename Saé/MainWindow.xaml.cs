@@ -19,7 +19,8 @@ namespace Saé
     public partial class MainWindow : Window
     {
         public static MediaPlayer musiqueFond { get; private set; }
-        public static MediaPlayer bruitageSonPas { get; private set; }
+        public static MediaPlayer bruitageSonTerre { get; private set; }
+        public static MediaPlayer bruitageSonSable { get; private set; }
         public static MediaPlayer bruitageSonSaut { get; private set; }
         public static MediaPlayer bruitageSonPiece { get; private set; }
         public static MediaPlayer bruitageSonCle { get; private set; }
@@ -31,7 +32,8 @@ namespace Saé
         public MainWindow()
         {
             InitializeComponent();
-            bruitageSonPas = InitializeSon("sonMarcheTerre.wav");
+            bruitageSonTerre = InitializeSon("sonMarcheTerre.wav");
+            bruitageSonSable = InitializeSon("sonMarcheSable.wav");
             bruitageSonSaut = InitializeSon("sonSaut.wav");
             bruitageSonPiece = InitializeSon("sonPiece.wav");
             bruitageSonCle = InitializeSon("sonCle.wav");
@@ -115,13 +117,14 @@ namespace Saé
         {
             UCPlage uc = new UCPlage();
             ZoneJeu.Content = uc;
-            uc.butPause.Click += AfficherParametres;
+            uc.CleCollectee += AgagnePlage;
         }
 
         private void LancerDesert(object sender, RoutedEventArgs e)
         {
             UCDesert uc = new UCDesert();
             ZoneJeu.Content = uc;
+            uc.CleCollectee += AgagneDesert;
         }
 
         private void LancerForet(object sender, RoutedEventArgs e)
@@ -134,6 +137,20 @@ namespace Saé
         private void AgagneForet()
         {
             UCGagneForet uc = new UCGagneForet();
+            ZoneJeu.Content = uc;
+            uc.butSuivant.Click += ChoixNiveau;
+        }
+
+        private void AgagneDesert()
+        {
+            UCGagneDesert uc = new UCGagneDesert();
+            ZoneJeu.Content = uc;
+            uc.butSuivant.Click += ChoixNiveau;
+        }
+
+        private void AgagnePlage()
+        {
+            UCGagnePlage uc = new UCGagnePlage();
             ZoneJeu.Content = uc;
             uc.butSuivant.Click += ChoixNiveau;
         }
