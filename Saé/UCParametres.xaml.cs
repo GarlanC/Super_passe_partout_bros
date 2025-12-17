@@ -64,10 +64,15 @@ namespace Saé
 
         private void butRetour_Click(object sender, RoutedEventArgs e)
         {
-            txtHaut.Text = $"Haut : {oldHaut}";
-            txtBas.Text = $"Bas : {oldBas}";
-            txtGauche.Text = $"Gauche : {oldGauche}";
-            txtDroite.Text = $"Droite : {oldDroite}";
+            Haut = oldHaut;
+            Bas = oldBas;
+            Gauche = oldGauche;
+            Droite = oldDroite;
+
+            txtHaut.Text = $"Haut : {Haut}";
+            txtBas.Text = $"Bas : {Bas}";
+            txtGauche.Text = $"Gauche : {Gauche}";
+            txtDroite.Text = $"Droite : {Droite}";
 
             waitingButton = null;
             this.PreviewKeyDown -= UCParametres_KeyDown;
