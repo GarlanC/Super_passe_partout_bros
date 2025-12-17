@@ -23,6 +23,9 @@ namespace Saé
         public static MediaPlayer bruitageSonSaut { get; private set; }
         public static MediaPlayer bruitageSonPiece { get; private set; }
         public static MediaPlayer bruitageSonCle { get; private set; }
+        public static int nbCleForet = 0;
+        public static int nbCleDesert = 0;
+        public static int nbClePlage = 0;
         public static string Perso { get; set; }
         public static int pasPerso { get; set; } = 5;
         public static int volumeFond { get; set; } = 100;
@@ -31,6 +34,7 @@ namespace Saé
         {
             InitializeComponent();
             AfficheMenu();
+            
         }
 
         public static void InitializeSonFond()
@@ -87,6 +91,7 @@ namespace Saé
             ZoneJeu.Content = uc;
             uc.butJouer.Click += AfficherChoixPerso;
             uc.butParametres.Click += AfficherParametres;
+            uc.txtCptClés.Text = $"Clés foret : {nbCleForet}";
         }
 
         private void AfficherChoixPerso(object sender, RoutedEventArgs e)
@@ -159,6 +164,7 @@ namespace Saé
             UCGagneForet uc = new UCGagneForet();
             ZoneJeu.Content = uc;
             uc.butSuivant.Click += RetourMenu_Click;
+            nbCleForet += 1;
         }
     }
 }

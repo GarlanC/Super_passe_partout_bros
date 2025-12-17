@@ -12,6 +12,7 @@
         <Image Margin="224,10,224,201" Source="/images/titre.png" Stretch="Fill"/>
         <Button x:Name="butJouer" Content="Jouer" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
         <Button x:Name="butParametres" Content="Paramètres" HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" Height="43" Width="186" FontSize="22" FontFamily="Ravie"/>
+        <TextBlock x:Name="txtCptClés" HorizontalAlignment="Left" Margin="60,40,0,0" TextWrapping="Wrap" Text="Clés : 0" VerticalAlignment="Top"/>
 
     </Grid>
 </UserControl>
